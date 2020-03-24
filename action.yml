@@ -1,15 +1,21 @@
-name: 'Packer GitHub Actions'
-description: 'Runs Packer commands via GitHub Actions'
 author: 'Kerim Satirli <kerim@operatehappy.com>'
-branding:
-  icon: 'terminal'
-  color: 'blue'
-inputs:
-  packerCommand:
-    description: 'Packer Command to execute'
-    default: 'validate'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.packerCommand }}
+branding: 
+  color: blue
+  icon: terminal
+description: 'Runs Packer commands via GitHub Actions'
+inputs: 
+  actionArguments: 
+    default: ''-syntax-only'
+    description: 'Arguments ot append to Command'
+  actionCommand: 
+    default: validate
+    description: 'Command to execute'
+  actionTargetFile: 
+    default: packer.json
+    description: 'Packer files to target'
+  actionVarFile: 
+    description: 'JSON File containing user variables'
+name: 'Packer GitHub Actions'
+runs: 
+  image: Dockerfile
+  using: docker
