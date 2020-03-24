@@ -2,16 +2,16 @@
 
 name: Packer GitHub Actions
 author: Kerim Satirli <kerim@operatehappy.com>
-description: Runs Packer commands via GitHub Actions
+description: Runs Packer commands
 
 inputs:
   command:
-    description: Command to execute
+    description: command to execute
     required: true
   arguments:
-    description: Arguments to append to Command
+    description: arguments for command
   target:
-    description: Files to target
+    description: files to target
     default: packer.json
 
 runs:
