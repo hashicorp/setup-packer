@@ -3,15 +3,14 @@ description: 'Runs Packer commands via GitHub Actions'
 author: 'Kerim Satirli <kerim@operatehappy.com>'
 
 branding: 
-  color: blue
-  icon: terminal
+  color: 'blue'
+  icon: 'package'
 
 inputs: 
   actionCommand: 
-    default: validate
     description: 'Command to execute'
+    required: true
   actionArguments: 
-    default: '-syntax-only'
     description: 'Arguments ot append to Command'
   actionVarFile: 
     description: 'JSON File containing user variables'
@@ -20,5 +19,10 @@ inputs:
     description: 'Files to target'
 
 runs: 
-  image: Dockerfile
-  using: docker
+  using: 'docker'
+  image: 'docker://hashicorp/packer:light'
+  args:
+    - ${{ inputs.actionCommand }}
+    - ${{ inputs.actionArguments }}
+    - "-var-file=${{ inputs.actionArguments }}"
+    - "${{ inputs.actionArguments }}"
