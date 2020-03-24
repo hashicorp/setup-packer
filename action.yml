@@ -7,6 +7,9 @@ branding:
   icon: 'package'
 
 inputs: 
+  version:
+    description: 'Packer version to use'
+    default: light
   command: 
     description: 'Command to execute'
     required: true
@@ -20,9 +23,8 @@ inputs:
 
 runs: 
   using: 'docker'
-  image: 'docker://hashicorp/packer:light'
+  image: 'docker://hashicorp/packer:${{ inputs.version }}'
   args:
     - ${{ inputs.command }}
     - ${{ inputs.arguments }}
-    - -var-file="${{ inputs.actionArguments }}"
     - "${{ inputs.target }}"
