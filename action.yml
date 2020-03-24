@@ -7,17 +7,17 @@ branding:
   icon: terminal
 
 inputs: 
-  actionArguments: 
-    default: ''-syntax-only'
-    description: 'Arguments ot append to Command'
   actionCommand: 
     default: validate
     description: 'Command to execute'
-  actionTargetFile: 
-    default: packer.json
-    description: 'Packer files to target'
+  actionArguments: 
+    default: '-syntax-only'
+    description: 'Arguments ot append to Command'
   actionVarFile: 
     description: 'JSON File containing user variables'
+  actionTarget: 
+    default: packer.json
+    description: 'Files to target'
 
 runs: 
   image: Dockerfile
