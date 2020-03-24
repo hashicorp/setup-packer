@@ -2,4 +2,7 @@
 
 env
 
-echo packer "${1}"
+packer \
+  "${INPUT_COMMAND}" \
+  "${INPUT_ARGUMENTS}" \
+  "${INPUT_TARGET}"
