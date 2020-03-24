@@ -23,7 +23,7 @@ inputs:
 
 runs: 
   using: 'docker'
-  image: "docker://hashicorp/packer:${{ inputs.version }}"
+  image: 'docker://hashicorp/packer:light'
   args:
     - ${{ inputs.command }}
     - ${{ inputs.arguments }}
