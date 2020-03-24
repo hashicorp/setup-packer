@@ -1,12 +1,8 @@
 ---
 
 name: Packer GitHub Actions
-description: Runs Packer commands via GitHub Actions
 author: Kerim Satirli <kerim@operatehappy.com>
-
-branding:
-  color: blue
-  icon: package
+description: Runs Packer commands via GitHub Actions
 
 inputs:
   command:
@@ -25,3 +21,7 @@ runs:
     - ${{ inputs.command }}
     - ${{ inputs.arguments }}
     - "${{ inputs.target }}"
+
+branding:
+  color: blue
+  icon: package
