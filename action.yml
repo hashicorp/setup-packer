@@ -5,21 +5,11 @@ branding:
   icon: 'terminal'
   color: 'blue'
 inputs:
-  packer_command:
-    description: 'Packer command to execute'
-    required: true
-  packer_version:
-    description: 'Terraform version to install.'
-    required: true
-  packer_comment:
-    description: 'Whether or not to comment on pull requests.'
-    default: true
-  packer_working_dir:
-    description: 'Terraform working directory.'
-    default: '.'
-outputs:
-  tf_actions_fmt_written:
-    description: 'Whether or not the Terraform formatting was written to source files.'
+  packerCommand:
+    description: 'Packer Command to execute'
+    default: 'validate'
 runs:
   using: 'docker'
-  image: './Dockerfile'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.packerCommand }}
