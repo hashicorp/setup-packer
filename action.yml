@@ -7,14 +7,14 @@ branding:
   icon: 'package'
 
 inputs: 
-  actionCommand: 
+  command: 
     description: 'Command to execute'
     required: true
-  actionArguments: 
+  arguments: 
     description: 'Arguments ot append to Command'
-  actionVarFile: 
+  varFile: 
     description: 'JSON File containing user variables'
-  actionTarget: 
+  target: 
     default: packer.json
     description: 'Files to target'
 
@@ -22,7 +22,7 @@ runs:
   using: 'docker'
   image: 'docker://hashicorp/packer:light'
   args:
-    - ${{ inputs.actionCommand }}
-    - ${{ inputs.actionArguments }}
-    - "-var-file=${{ inputs.actionArguments }}"
-    - "${{ inputs.actionArguments }}"
+    - ${{ inputs.command }}
+    - ${{ inputs.arguments }}
+    - -var-file="${{ inputs.actionArguments }}"
+    - "${{ inputs.target }}"
