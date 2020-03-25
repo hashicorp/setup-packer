@@ -19,5 +19,5 @@ for TARGET in "${INPUT_TARGET[@]}"; do
   echo "::debug:: Processing target ${TARGET}"
 
   # shellcheck disable=SC2086
-  ${OPERATION} ${TARGET}
+  ${OPERATION} "${TARGET}"
 done
