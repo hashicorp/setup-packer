@@ -8,9 +8,9 @@ fi
 
 # assemble operation
 if [ -z "${INPUT_ARGUMENTS}" ]; then
-  OPERATION="packer ${INPUT_COMMAND} ${INPUT_ARGUMENTS}"
-else
   OPERATION="packer ${INPUT_COMMAND}"
+else
+  OPERATION="packer ${INPUT_COMMAND} ${INPUT_ARGUMENTS}"
 fi
 
 echo "::debug:: Executing command: ${OPERATION}"
@@ -19,7 +19,7 @@ echo "::debug:: Executing command: ${OPERATION}"
 # shellcheck disable=SC2206
 TARGETS=(${INPUT_TARGET})
 
-# iterate over targets
+# iterate over target(s)
 for TARGET in "${TARGETS[@]}"; do
   echo "::debug:: Processing target ${TARGET}"
 
