@@ -1,0 +1,28 @@
+---
+
+name: Packer GitHub Actions
+author: Kerim Satirli <kerim@operatehappy.com>
+description: Run Packer commands
+
+inputs:
+  command:
+    description: command to execute
+    required: true
+  arguments:
+    description: arguments for command
+  target:
+    description: file(s) to target
+    required: true
+    default: artifacts.pkr.json
+
+outputs:
+  command:
+    description: interpolated command (incl. arguments) that will be executed
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  color: blue
+  icon: package
