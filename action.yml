@@ -19,8 +19,8 @@ inputs:
 runs:
   using: docker
   image: docker://hashicorp/packer:light
-  entrypoint: bin/packer "${{ inputs.command }}"
   args:
+    - ${{ inputs.command }} ${{ inputs.arguments }}
     - ${{ inputs.target }}
 
 branding:
