@@ -19,8 +19,9 @@ inputs:
 runs:
   using: docker
   image: docker://hashicorp/packer:light
-  args:
-    - ${{ inputs.command }} ${{ inputs.arguments }} ${{ inputs.target }}
+  entrypoint: env
+#  args:
+#    - ${{ inputs.command }} ${{ inputs.arguments }} ${{ inputs.target }}
 
 branding:
   color: blue
