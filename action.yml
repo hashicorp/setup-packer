@@ -17,9 +17,9 @@ inputs:
     default: artifacts.pkr.json
 
 runs:
-  using: docker
-  image: docker://hashicorp/packer:light
-  entrypoint: env
+  using: 'docker'
+  image: 'Dockerfile'
+#  image: docker://hashicorp/packer:light
 #  args:
 #    - ${{ inputs.command }} ${{ inputs.arguments }} ${{ inputs.target }}
 
