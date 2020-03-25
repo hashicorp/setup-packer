@@ -11,8 +11,9 @@ inputs:
   arguments:
     description: arguments for command
   target:
-    description: files to target
-    default: packer.json
+    description: file(s) to target
+    required: true
+    default: artifacts.pkr.json
 
 runs:
   using: docker
