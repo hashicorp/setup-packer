@@ -19,8 +19,7 @@ runs:
   using: docker
   image: docker://hashicorp/packer:light
   args:
-    - ${{ inputs.command }} ${{ inputs.arguments }}
-    - "${{ inputs.target }}"
+    - ${{ inputs.command }} ${{ inputs.arguments }} ${{ inputs.target }}
 
 branding:
   color: blue
