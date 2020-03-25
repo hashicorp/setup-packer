@@ -10,6 +10,7 @@ inputs:
     required: true
   arguments:
     description: arguments for command
+    default: -debug=false
   target:
     description: file(s) to target
     required: true
@@ -18,8 +19,9 @@ inputs:
 runs:
   using: docker
   image: docker://hashicorp/packer:light
+  entrypoint: packer ${{ inputs.command }} ${{ inputs.arguments }}
   args:
-    - ${{ inputs.command }} ${{ inputs.arguments }} ${{ inputs.target }}
+    - ${{ inputs.target }}
 
 branding:
   color: blue
