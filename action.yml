@@ -10,7 +10,6 @@ inputs:
     required: true
   arguments:
     description: arguments for command
-    default: null
   target:
     description: file(s) to target
     required: true
