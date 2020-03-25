@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # fail if INPUT_COMMAND is not set
 if [ -z "${INPUT_COMMAND}" ]; then
@@ -15,7 +15,12 @@ fi
 
 echo "::debug:: Executing command: ${OPERATION}"
 
-for TARGET in "${INPUT_TARGET[@]}"; do
+# cast INPUT_TARGET string to "array"
+# shellcheck disable=SC2206
+TARGETS=(${INPUT_TARGET})
+
+# iterate over targets
+for TARGET in "${TARGETS[@]}"; do
   echo "::debug:: Processing target ${TARGET}"
 
   # shellcheck disable=SC2086
