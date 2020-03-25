@@ -16,6 +16,10 @@ inputs:
     required: true
     default: artifacts.pkr.json
 
+outputs:
+  command:
+    description: interpolated command (incl. arguments) that will be executed
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
