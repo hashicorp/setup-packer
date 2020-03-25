@@ -54,7 +54,7 @@ jobs:
       - name: Build Artifact
         uses: operatehappy/packer-github-action
         with:
-          command: validate
+          command: build
           arguments: "-color=false -on-error=abort"
 
       # additional steps to process artifacts
