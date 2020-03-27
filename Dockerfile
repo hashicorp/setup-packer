@@ -1,4 +1,4 @@
-FROM hashicorp/packer:light@sha256:df7feeff930b04a42f2027dd0924392246f7b5a38f0c56531a2d14cd0d1e9408
+FROM hashicorp/packer:light@sha256:5ebe2fff60ee439d251f2bcbbb71efef6918439dfd04415fc1ab5bd5a212c591
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 
