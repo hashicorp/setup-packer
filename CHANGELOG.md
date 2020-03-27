@@ -6,4 +6,3 @@
 ## `0.1.0` (2020-03-24)
 
 * adds base files ([6f7428a](https://github.com/ksatirli/packer-github-actions/commit/6f7428a))
-
