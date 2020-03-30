@@ -38,13 +38,13 @@ jobs:
 
       # fix backwards incompatibilities in template
       - name: Fix Template
-        uses: operatehappy/packer-github-action
+        uses: operatehappy/packer-github-actions@master
         with:
           command: fix
 
       # validate templates
       - name: Validate Template
-        uses: operatehappy/packer-github-action
+        uses: operatehappy/packer-github-actions@master
         with:
           command: validate
           arguments: -syntax-only
@@ -56,6 +56,7 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
+          target: artifacts.pkr.json packer.json
 
       # additional steps to process artifacts
 ```
