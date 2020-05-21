@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # fail if INPUT_COMMAND is not set
 if [ -z "${INPUT_COMMAND}" ]; then
   echo "Required variable \`command\` is missing"
