@@ -52,7 +52,7 @@ jobs:
 
       # build artifact
       - name: Build Artifact
-        uses: operatehappy/packer-github-action
+        uses: operatehappy/packer-github-actions@master
         with:
           command: build
           arguments: "-color=false -on-error=abort"
