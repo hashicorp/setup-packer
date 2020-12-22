@@ -10,6 +10,10 @@ inputs:
     required: true
   arguments:
     description: arguments for command
+    required: false
+  working_directory:
+    description: working directory for command (defaults to root)
+    required: false
   target:
     description: file(s) to target
     required: true
