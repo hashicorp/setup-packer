@@ -8,6 +8,10 @@ if [ -z "${INPUT_COMMAND}" ]; then
   exit 1
 fi
 
+if [ -n "${INPUT_WORKING_DIRECTORY}" ]; then
+  cd "${INPUT_WORKING_DIRECTORY}"
+fi
+
 # assemble operation
 if [ -z "${INPUT_ARGUMENTS}" ]; then
   OPERATION="packer ${INPUT_COMMAND}"
