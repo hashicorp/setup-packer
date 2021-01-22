@@ -1,6 +1,6 @@
-# `0.3.0` (2020-09-24)
+# `0.3.0` (2021-01-22)
 
-* Update Dockerfile to point to packer version 6.2
+* Update Dockerfile to point to packer version `1.6.6`
 
 ## `0.2.0` (2020-03-25)
 
