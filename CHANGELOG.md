@@ -1,4 +1,8 @@
-# `0.2.0` (2020-03-25)
+# `0.3.0` (2020-09-24)
+
+* Update Dockerfile to point to packer version 6.2
+
+## `0.2.0` (2020-03-25)
 
 * Adds Packer action (#1) ([d80192d](https://github.com/ksatirli/packer-github-actions/commit/d80192d)), closes [#1](https://github.com/ksatirli/packer-github-actions/issues/1)
 * adds GitHub Actions for `code-quality` and `repository-management` ([2a0399e](https://github.com/ksatirli/packer-github-actions/commit/2a0399e))
