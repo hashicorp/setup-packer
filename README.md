@@ -83,7 +83,7 @@ Other CLI commands (`console`, `inspect` and `version`) are _technically_ suppor
 
 `arguments` supports all options available for the respective `command`.
 
-The arguments must be provided as a single string. Multiple arguments should be concatenated like so: "-color=false -on-error=abort"
+The arguments must be provided as a single string. Multiple arguments should be concatenated like so: `-color=false -on-error=abort`
 
 #### `target`
 
