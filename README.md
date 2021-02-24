@@ -105,7 +105,7 @@ The arguments must be provided as a single string. Multiple arguments should be 
 
 ## Author Information
 
-This module is maintained by the contributors listed on [GitHub](https://github.com/operatehappy/packer-github-action/graphs/contributors).
+This module is maintained by the contributors listed on [GitHub](https://github.com/hashicorp/packer-github-actions/graphs/contributors).
 
 Development of this module was sponsored by [Operate Happy](https://github.com/operatehappy).
 
