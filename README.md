@@ -8,9 +8,10 @@
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
     - [Inputs](#inputs)
-      - [command](#command)
-      - [arguments](#arguments)
-      - [target](#target)
+      - [`command`](#command)
+      - [`arguments`](#arguments)
+      - [`target`](#target)
+  - [Detailed logs](#detailed-logs)
   - [Notes](#notes)
   - [Author Information](#author-information)
   - [License](#license)
@@ -48,7 +49,7 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: artifacts.pkr.json packer.json
+          target: artifacts.pkr.hcl packer.pkr.hcl
 
       # build artifact
       - name: Build Artifact
@@ -56,7 +57,9 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: artifacts.pkr.json packer.json
+          target: artifacts.pkr.hcl packer.pkr.hcl
+        env: 
+          PACKER_LOG: 1
 
       # additional steps to process artifacts
 ```
@@ -67,7 +70,7 @@ jobs:
 |-------------|-----------------------|----------|----------------------|
 | `command`   | command to execute    | yes      |                      |
 | `arguments` | arguments for command | no       |                      |
-| `target`    | file(s) to target     | yes      | `artifacts.pkr.json` |
+| `target`    | file(s) to target     | yes      | `artifacts.pkr.hcl` |
 
 #### `command`
 
@@ -91,13 +94,32 @@ The arguments must be provided as a single string. Multiple arguments should be 
 
  ```yaml
     # single file
-    target: artifacts.pkr.json
+    target: artifacts.pkr.hcl
 
     # multiple files, separated by whitespace
-    target: artifacts.pkr.json packer.json
+    target: artifacts.pkr.hcl packer.pkr.hcl
 ```
 
  The Action will iterate over each file and run each `command`, separately.
+
+## Detailed logs
+
+Packer has an option to enable more detailed logs by setting the `PACKER_LOG` environment variable.
+Any value other than `""` (empty string) and `"0"`, will cause detailed logs to appear on stderr. 
+
+To set `PACKER_LOG=1`, simply define the environment variable in the step configuration like:
+
+```yaml
+  # build artifact
+  - name: Build Artifact
+    uses: hashicorp/packer-github-actions@master
+    with:
+      command: build
+      arguments: "-color=false -on-error=abort"
+      target: artifacts.pkr.hcl packer.pkr.hcl
+    env: 
+      PACKER_LOG: 1
+```
 
 ## Notes
 
