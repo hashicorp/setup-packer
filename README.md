@@ -90,7 +90,8 @@ The arguments must be provided as a single string. Multiple arguments should be 
 
 #### `target`
 
-`target` supports a string consisting of one or more file paths:
+`target` supports a string consisting of one or more file or directory paths. Just like Packer,
+`.` is allowed to refer to the working directory. Example:
 
  ```yaml
     # single file
@@ -98,6 +99,9 @@ The arguments must be provided as a single string. Multiple arguments should be 
 
     # multiple files, separated by whitespace
     target: artifacts.pkr.hcl packer.pkr.hcl
+
+    # working directory
+    target: .
 ```
 
  The Action will iterate over each file and run each `command`, separately.
