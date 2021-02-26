@@ -108,7 +108,7 @@ The arguments must be provided as a single string. Multiple arguments should be 
 ## Detailed logs
 
 Packer has an option to enable more detailed logs by setting the `PACKER_LOG` environment variable.
-Any value other than `""` (empty string) and `"0"`, will cause detailed logs to appear on stderr. 
+Any value other than `""` (empty string) and `"0"`, will cause detailed logs to appear on stderr.
 
 To set `PACKER_LOG=1`, simply define the environment variable in the step configuration like:
 
