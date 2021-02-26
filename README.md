@@ -70,7 +70,7 @@ jobs:
 |-------------|-----------------------|----------|----------------------|
 | `command`   | command to execute    | yes      |                      |
 | `arguments` | arguments for command | no       |                      |
-| `target`    | file(s) to target     | yes      | `artifacts.pkr.hcl` |
+| `target`    | file(s) to target     | yes      | `artifacts.pkr.hcl`  |
 
 #### `command`
 
