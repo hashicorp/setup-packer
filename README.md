@@ -66,11 +66,11 @@ jobs:
 
 ### Inputs
 
-| Name        | Description           | Required | Default              |
-|-------------|-----------------------|----------|----------------------|
-| `command`   | command to execute    | yes      |                      |
-| `arguments` | arguments for command | no       |                      |
-| `target`    | file(s) to target     | yes      | `artifacts.pkr.hcl`  |
+| Name        | Description                    | Required | Default              |
+|-------------|--------------------------------|----------|----------------------|
+| `command`   | command to execute             | yes      |                      |
+| `arguments` | arguments for command          | no       |                      |
+| `target`    | file(s) or directory to target | no       | `artifacts.pkr.hcl`  |
 
 #### `command`
 

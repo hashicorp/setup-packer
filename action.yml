@@ -16,7 +16,7 @@ inputs:
     required: false
   target:
     description: file(s) or directory to target
-    required: true
+    required: false
     default: artifacts.pkr.hcl
 
 outputs:
