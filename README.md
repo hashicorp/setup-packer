@@ -58,7 +58,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: packer.pkr.hcl
-        env: 
+        env:
           PACKER_LOG: 1
 
       # additional steps to process artifacts
@@ -120,7 +120,7 @@ To set `PACKER_LOG=1`, simply define the environment variable in the step config
       command: build
       arguments: "-color=false -on-error=abort"
       target: packer.pkr.hcl
-    env: 
+    env:
       PACKER_LOG: 1
 ```
 
