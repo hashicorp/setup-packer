@@ -49,7 +49,7 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: artifacts.pkr.hcl packer.pkr.hcl
+          target: packer.pkr.hcl
 
       # build artifact
       - name: Build Artifact
@@ -57,7 +57,7 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: artifacts.pkr.hcl packer.pkr.hcl
+          target: packer.pkr.hcl
         env: 
           PACKER_LOG: 1
 
@@ -66,11 +66,11 @@ jobs:
 
 ### Inputs
 
-| Name        | Description                    | Required | Default              |
-|-------------|--------------------------------|----------|----------------------|
-| `command`   | command to execute             | yes      |                      |
-| `arguments` | arguments for command          | no       |                      |
-| `target`    | file(s) or directory to target | no       | `artifacts.pkr.hcl`  |
+| Name        | Description                    | Required | Default |
+|-------------|--------------------------------|----------|---------|
+| `command`   | command to execute             | yes      |         |
+| `arguments` | arguments for command          | no       |         |
+| `target`    | file(s) or directory to target | no       |   `.`   |
 
 #### `command`
 
@@ -90,8 +90,7 @@ The arguments must be provided as a single string. Multiple arguments should be 
 
 #### `target`
 
-`target` supports a string consisting of one or more file or directory paths. Just like Packer,
-`.` is allowed to refer to the working directory. Example:
+`target` supports a string consisting of one or more file or directory paths:
 
  ```yaml
     # single file
@@ -120,7 +119,7 @@ To set `PACKER_LOG=1`, simply define the environment variable in the step config
     with:
       command: build
       arguments: "-color=false -on-error=abort"
-      target: artifacts.pkr.hcl packer.pkr.hcl
+      target: packer.pkr.hcl
     env: 
       PACKER_LOG: 1
 ```
