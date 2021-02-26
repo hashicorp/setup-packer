@@ -76,6 +76,7 @@ jobs:
 
 `command` supports the following subset of Packer [CLI commands](https://packer.io/docs/commands/index.html):
 
+- [init](https://www.packer.io/docs/commands/init) to download Packer plugin binaries
 - [build](https://www.packer.io/docs/commands/build) to generate a set of artifacts from a template
 - [fix](https://www.packer.io/docs/commands/fix) to find and correct backwards incompatible stanzas in a template
 - [validate](https://www.packer.io/docs/commands/validate) to validate the syntax and configuration of a template
