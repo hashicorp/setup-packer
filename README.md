@@ -8,9 +8,10 @@
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
     - [Inputs](#inputs)
-      - [command](#command)
-      - [arguments](#arguments)
-      - [target](#target)
+      - [`command`](#command)
+      - [`arguments`](#arguments)
+      - [`target`](#target)
+  - [Detailed logs](#detailed-logs)
   - [Notes](#notes)
   - [Author Information](#author-information)
   - [License](#license)
@@ -48,7 +49,7 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: artifacts.pkr.json packer.json
+          target: packer.pkr.hcl
 
       # build artifact
       - name: Build Artifact
@@ -56,23 +57,26 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: artifacts.pkr.json packer.json
+          target: packer.pkr.hcl
+        env:
+          PACKER_LOG: 1
 
       # additional steps to process artifacts
 ```
 
 ### Inputs
 
-| Name        | Description           | Required | Default              |
-|-------------|-----------------------|----------|----------------------|
-| `command`   | command to execute    | yes      |                      |
-| `arguments` | arguments for command | no       |                      |
-| `target`    | file(s) to target     | yes      | `artifacts.pkr.json` |
+| Name        | Description                    | Required | Default |
+|-------------|--------------------------------|----------|---------|
+| `command`   | command to execute             | yes      |         |
+| `arguments` | arguments for command          | no       |         |
+| `target`    | file(s) or directory to target | no       |   `.`   |
 
 #### `command`
 
 `command` supports the following subset of Packer [CLI commands](https://packer.io/docs/commands/index.html):
 
+- [init](https://www.packer.io/docs/commands/init) to download Packer plugin binaries
 - [build](https://www.packer.io/docs/commands/build) to generate a set of artifacts from a template
 - [fix](https://www.packer.io/docs/commands/fix) to find and correct backwards incompatible stanzas in a template
 - [validate](https://www.packer.io/docs/commands/validate) to validate the syntax and configuration of a template
@@ -87,17 +91,39 @@ The arguments must be provided as a single string. Multiple arguments should be 
 
 #### `target`
 
-`target` supports a string consisting of one or more file paths:
+`target` supports a string consisting of one or more file or directory paths:
 
  ```yaml
     # single file
-    target: artifacts.pkr.json
+    target: artifacts.pkr.hcl
 
     # multiple files, separated by whitespace
-    target: artifacts.pkr.json packer.json
+    target: artifacts.pkr.hcl packer.pkr.hcl
+
+    # working directory
+    target: .
 ```
 
  The Action will iterate over each file and run each `command`, separately.
+
+## Detailed logs
+
+Packer has an option to enable more detailed logs by setting the `PACKER_LOG` environment variable.
+Any value other than `""` (empty string) and `"0"`, will cause detailed logs to appear on stderr.
+
+To set `PACKER_LOG=1`, simply define the environment variable in the step configuration like:
+
+```yaml
+  # build artifact
+  - name: Build Artifact
+    uses: hashicorp/packer-github-actions@master
+    with:
+      command: build
+      arguments: "-color=false -on-error=abort"
+      target: packer.pkr.hcl
+    env:
+      PACKER_LOG: 1
+```
 
 ## Notes
 

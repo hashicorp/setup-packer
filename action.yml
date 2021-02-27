@@ -15,9 +15,9 @@ inputs:
     description: working directory for command (defaults to root)
     required: false
   target:
-    description: file(s) to target
-    required: true
-    default: artifacts.pkr.json
+    description: file(s) or directory to target
+    required: false
+    default: .
 
 outputs:
   command:
