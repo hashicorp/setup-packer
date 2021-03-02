@@ -1,6 +1,8 @@
-# `0.3.0` (UNRELEASED, 2021-01)
+# `0.3.0` (UNRELEASED, 2021-03)
 
-* Update Dockerfile to point to packer version `1.6.6`
+* Update Dockerfile to point to packer version `1.7.0`
+* Change `target` default to `.` [#17](https://github.com/hashicorp/packer-github-actions/pull/17)
+* Mark `target` as not required [#17](https://github.com/hashicorp/packer-github-actions/pull/17)
 * Add support for working_directory [#11](https://github.com/operatehappy/packer-github-actions/pull/11)
 
 ## `0.2.0` (2020-03-25)
