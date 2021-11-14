@@ -1,3 +1,8 @@
+# `0.3.1` (UNRELEASED, 2021-11)
+
+* Update Dockerfile to point to packer version `1.7.8`
+* Install Ansible
+
 # `0.3.0` (UNRELEASED, 2021-03)
 
 * Update Dockerfile to point to packer version `1.7.0`
