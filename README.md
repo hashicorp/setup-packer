@@ -60,6 +60,8 @@ jobs:
           target: packer.pkr.hcl
         env:
           PACKER_LOG: 1
+          HCP_CLIENT_ID= ${{ secrets.HCP_CLIENT_ID }}
+          HCP_CLIENT_SECRET= ${{ secrets.HCP_CLIENT_SECRET }}
 
       # additional steps to process artifacts
 ```
@@ -123,6 +125,7 @@ To set `PACKER_LOG=1`, simply define the environment variable in the step config
       target: packer.pkr.hcl
     env:
       PACKER_LOG: 1
+
 ```
 
 ## Notes
