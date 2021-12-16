@@ -129,6 +129,8 @@ To set `PACKER_LOG=1`, simply define the environment variable in the step config
 
 - To enable debug logging, create a secret named `ACTIONS_STEP_DEBUG` with the value `true`. See [here](https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-a-debug-message) for more information.
 
+- If you want to use HCP Packer as central image repository, do not forget to add HCP Secrets under your repo settings. See [here](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md)
+
 ## Author Information
 
 This module is maintained by the contributors listed on [GitHub](https://github.com/hashicorp/packer-github-actions/graphs/contributors).
