@@ -2,9 +2,6 @@
 
 set -e
 
-pwd
-ls
-
 # fail if INPUT_COMMAND is not set
 if [ -z "${INPUT_COMMAND}" ]; then
   echo "Required variable \`command\` is missing"
