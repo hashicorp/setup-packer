@@ -11,6 +11,7 @@
       - [`command`](#command)
       - [`arguments`](#arguments)
       - [`target`](#target)
+      - [`working_directory`](#working_directory)
   - [Detailed logs](#detailed-logs)
   - [Notes](#notes)
   - [Author Information](#author-information)
@@ -58,6 +59,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: packer.pkr.hcl
+          working_directory: infrastructure/packer
         env:
           PACKER_LOG: 1
 
@@ -105,6 +107,10 @@ The arguments must be provided as a single string. Multiple arguments should be 
 ```
 
  The Action will iterate over each file and run each `command`, separately.
+
+#### `working_directory`
+
+`working_directory` supports a string consisting of a directory path. This should be a relative path in your repository where you want the packer command to run.
 
 ## Detailed logs
 
