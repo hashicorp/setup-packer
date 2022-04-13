@@ -68,11 +68,12 @@ jobs:
 
 ### Inputs
 
-| Name        | Description                    | Required | Default |
-|-------------|--------------------------------|----------|---------|
-| `command`   | command to execute             | yes      |         |
-| `arguments` | arguments for command          | no       |         |
-| `target`    | file(s) or directory to target | no       |   `.`   |
+| Name                | Description                    | Required | Default |
+|---------------------|--------------------------------|----------|---------|
+| `command`           | command to execute             | yes      |         |
+| `arguments`         | arguments for command          | no       |         |
+| `target`            | file(s) or directory to target | no       |   `.`   |
+| `working_directory` | working directory for command  | no       |   `.`   |
 
 #### `command`
 
