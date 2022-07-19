@@ -1,4 +1,4 @@
-# `0.3.0` (UNRELEASED, 2021-11)
+# `0.3.0` (UNRELEASED, 2022-08)
 
 * Update Dockerfile to point to packer version `1.8.2`
 * Change `target` default to `.` [#17](https://github.com/hashicorp/packer-github-actions/pull/17)
