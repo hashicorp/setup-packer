@@ -1,6 +1,6 @@
 ---
 
-name: Packer GitHub Actions
+name: Packer GitHub Actions with Ansible Provisioner
 author: Kerim Satirli <javier.iosdesign@gmail.com>
 description: Run Packer commands
 
