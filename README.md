@@ -40,13 +40,13 @@ jobs:
 
       # fix backwards incompatibilities in template
       - name: Fix Template
-        uses: hashicorp/packer-github-actions@master
+        uses: jveraduran/packer-github-actions@master
         with:
           command: fix
 
       # validate templates
       - name: Validate Template
-        uses: hashicorp/packer-github-actions@master
+        uses: jveraduran/packer-github-actions@master
         with:
           command: validate
           arguments: -syntax-only
@@ -54,7 +54,7 @@ jobs:
 
       # build artifact
       - name: Build Artifact
-        uses: hashicorp/packer-github-actions@master
+        uses: jveraduran/packer-github-actions@master
         with:
           command: build
           arguments: "-color=false -on-error=abort"
@@ -125,7 +125,7 @@ To set `PACKER_LOG=1`, simply define the environment variable in the step config
 ```yaml
   # build artifact
   - name: Build Artifact
-    uses: hashicorp/packer-github-actions@master
+    uses: jveraduran/packer-github-actions@master
     with:
       command: build
       arguments: "-color=false -on-error=abort"
