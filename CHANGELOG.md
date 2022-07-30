@@ -1,15 +1,14 @@
-# `0.3.0` (UNRELEASED, 2021-11)
+## `1.0.0` (2020-07-30)
 
-* Update Dockerfile to point to packer version `1.7.8`
-* Change `target` default to `.` [#17](https://github.com/hashicorp/packer-github-actions/pull/17)
-* Mark `target` as not required [#17](https://github.com/hashicorp/packer-github-actions/pull/17)
-* Add support for working_directory [#11](https://github.com/operatehappy/packer-github-actions/pull/11)
-
-## `0.2.0` (2020-03-25)
-
-* Adds Packer action (#1) ([d80192d](https://github.com/ksatirli/packer-github-actions/commit/d80192d)), closes [#1](https://github.com/ksatirli/packer-github-actions/issues/1)
-* adds GitHub Actions for `code-quality` and `repository-management` ([2a0399e](https://github.com/ksatirli/packer-github-actions/commit/2a0399e))
-
-## `0.1.0` (2020-03-24)
-
-* adds base files ([6f7428a](https://github.com/ksatirli/packer-github-actions/commit/6f7428a))
+* Add initial files
+* Add ansible on base image
+* Fix vulnerabilities from base image
+  + CVE-2022-32207
+  + CVE-2022-30065
+  + CVE-2022-29187
+  + CVE-2022-2097
+  + CVE-2022-34903
+  + CVE-2022-32206
+  + CVE-2022-32208
+  + CVE-2022-32205
+  + CVE-2022-2509

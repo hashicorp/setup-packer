@@ -1,7 +1,7 @@
 ---
 
 name: Packer GitHub Actions
-author: Kerim Satirli <kerim@operatehappy.com>
+author: Kerim Satirli <javier.iosdesign@gmail.com>
 description: Run Packer commands
 
 inputs:
