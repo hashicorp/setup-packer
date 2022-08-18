@@ -15,8 +15,7 @@
     "actions",
     "github",
     "hashicorp",
-    "nomad",
-    "nomad-pack"
+    "packer"
   ],
   "author": "Kerim Satirli <kerim@hashicorp.com>",
   "license": "Apache-2.0",
