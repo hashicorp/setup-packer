@@ -1,0 +1,35 @@
+{
+  "name": "setup-packer",
+  "version": "2.0.0",
+  "description": "A GitHub Action to install a specific version of HashiCorp Packer and add it to PATH.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc && ncc build --no-cache",
+    "fmt": "prettier --write 'src/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hashicorp/setup-packer.git"
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "hashicorp",
+    "nomad",
+    "nomad-pack"
+  ],
+  "author": "Kerim Satirli <kerim@hashicorp.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@actions/io": "^1.1.2",
+    "@actions/tool-cache": "^2.0.1",
+    "@hashicorp/js-releases": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.6",
+    "@vercel/ncc": "^0.34.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}
