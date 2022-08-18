@@ -7,7 +7,7 @@ inputs:
   version:
     description: "The Packer version to install and add to PATH."
     required: true
-    default: "1.8.3"
+    default: "latest"
 outputs:
   version:
     description: "The Packer version that was installed and added to PATH."

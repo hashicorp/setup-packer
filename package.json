@@ -2,7 +2,7 @@
   "name": "setup-packer",
   "version": "2.0.0",
   "description": "A GitHub Action to install a specific version of HashiCorp Packer and add it to PATH.",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc && ncc build --no-cache",
     "fmt": "prettier --write 'src/*.ts'"
