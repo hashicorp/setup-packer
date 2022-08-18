@@ -1,0 +1,38 @@
+---
+name: "Code Quality: TypeScript"
+
+on:
+  push:
+
+jobs:
+  nodejs:
+    name: Node.js
+    runs-on: ubuntu-latest
+
+    strategy:
+      # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategyfail-fast
+      fail-fast: false
+      matrix:
+        node-version:
+          - 16.x
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install NPM Packages
+        run: npm install
+
+      - name: Format TypeScript code
+        run: npm run-script fmt
+
+      - name: Build TypeScript code
+        run: npm run-script build
