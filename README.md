@@ -1,4 +1,7 @@
-# GitHub Action: Packer
+# GitHub Action: `setup-packer`
+
+The `hashicorp/setup-nomad-pack` Action sets up the `nomad-pack` CLI in your GitHub Actions workflow by adding the binary to `PATH`.
+`
 
 > GitHub Action for running Packer [commands](https://www.packer.io/docs/commands).
 
