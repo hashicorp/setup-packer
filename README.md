@@ -1,6 +1,6 @@
 # GitHub Action: setup-packer
 
-The `hashicorp/setup-packer` Action sets up the `nomad-pack` CLI in your GitHub Actions workflow by adding the binary to `PATH`.
+The `hashicorp/setup-packer` Action sets up the `packer` CLI in your GitHub Actions workflow by adding the binary to `PATH`.
 
 ## Table of Contents
 
