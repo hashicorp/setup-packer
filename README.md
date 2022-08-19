@@ -13,7 +13,11 @@ The `hashicorp/setup-packer` Action sets up the `packer` CLI in your GitHub Acti
 
 ## Requirements
 
-TODO
+This GitHub Actions supports all commands that are available in the `packer` CLI.
+
+The [`build`](https://www.packer.io/docs/commands/build) command may require access to provider-specific credentials.
+
+Other [environment variables](https://www.packer.io/docs/commands#environment-variables) (such as `PACKER_LOG`) may be set as normal and will be picked up accordingly.
 
 ## Usage
 
@@ -21,15 +25,19 @@ TODO
 
 ## Inputs
 
-TODO
+This section contains a list of all inputs that may be set for this Action.
+
+- `version` - (required) The version of `nomad-pack` to install. Defaults to `latest`.
 
 ## Outputs
 
-TODO
+This section contains a list of all outputs that can be consumed from this Action.
+
+- `version` -  The version of `nomad-pack` that was installed.
 
 ## Author Information
 
-This module is maintained by the contributors listed on [GitHub](https://github.com/hashicorp/setup-packer/graphs/contributors).
+This GitHub Action is maintained by the contributors listed on [GitHub](https://github.com/hashicorp/setup-packer/graphs/contributors).
 
 The original code of this repository is based on work done by [Matthew Sanabria](https://github.com/sudomateo) as part of the [setup-packer](https://github.com/sudomateo/setup-packer) GitHub Action.
 
