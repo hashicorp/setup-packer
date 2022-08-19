@@ -67,13 +67,13 @@ Additionally, you may configure [outputs](https://docs.github.com/en/actions/usi
 
 This section contains a list of all inputs that may be set for this Action.
 
-- `version` - (required) The version of `nomad-pack` to install. Defaults to `latest`.
+- `version` - (required) The version of `packer` to install. Defaults to `latest`.
 
 ## Outputs
 
 This section contains a list of all outputs that can be consumed from this Action.
 
-- `version` -  The version of `nomad-pack` that was installed.
+- `version` -  The version of `packer` that was installed.
 
 ## Author Information
 
