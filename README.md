@@ -21,7 +21,47 @@ Other [environment variables](https://www.packer.io/docs/commands#environment-va
 
 ## Usage
 
-TODO
+1.) Create a GitHub Actions Workflow file (e.g.: `.github/workflows/packer.yml`):
+
+```yaml
+name: packer
+
+on:
+  - push
+
+jobs:
+  packer:
+    runs-on: ubuntu-latest
+    name: Run Packer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: "1.8.3" # or `latest`
+
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./image.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./image.pkr.hcl"
+```
+
+In the above example, the following definitions have been set.
+
+- The event trigger has been set to `push`. For a complete list, see [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+- The origin of this GitHub Action has been set as `hashicorp/setup-packer@main`. For newer versions, see the [Releases](https://github.com/hashicorp/setup-packer/releases).
+- The version of `packer` to set up has been set as `1.8.3`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
+- The Packer manifest to interact with has been set as `./image.pkr.hcl`
+
+These definitions may require updating to suit your deployment, such as specifying [self-hosted](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-self-hosted-runners) runners.
+
+Additionally, you may configure [outputs](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-defining-outputs-for-a-job) to consume return values from the Action's operations.
 
 ## Inputs
 
