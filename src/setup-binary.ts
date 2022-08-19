@@ -36,8 +36,8 @@ export async function fetchBinary(versionSpec: string): Promise<string> {
   let release = await hc.getRelease(BINARY_NAME, versionSpec, USER_AGENT);
 
   const {version} = release;
-  let nameAndVersion = BINARY_NAME + ` ` + version;
-  let nameAndPlatform = BINARY_NAME + `_${osPlatform}`;
+  const nameAndVersion = BINARY_NAME + ` ` + version;
+  const nameAndPlatform = BINARY_NAME + `_${osPlatform}`;
 
   core.info(`Found ${nameAndVersion}.`);
 
