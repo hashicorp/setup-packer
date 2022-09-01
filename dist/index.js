@@ -2866,6 +2866,9 @@ function fetchBinary(binaryName, version, userAgent) {
         const tmpDir = getTempDir();
         let binaryPath;
         core.info(`Finding release that matches ${version}.`);
+        core.info(`binaryName ${binaryName}.`);
+        core.info(`version ${version}.`);
+        core.info(`userAgent ${userAgent}.`);
         let release = yield hc.getRelease(binaryName, version, userAgent);
         const nameAndVersion = binaryName + ` ` + version;
         const nameAndPlatform = binaryName + `_${osPlatform}`;
