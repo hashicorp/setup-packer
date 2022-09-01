@@ -2851,7 +2851,7 @@ function setupBinary(binaryName, version) {
     return __awaiter(this, void 0, void 0, function* () {
         core.warning(`inside setup-binary function`);
         let userAgent = `setup-${binaryName} (GitHub Actions)`;
-        let binaryPath = yield fetchBinary(version, binaryName, userAgent);
+        let binaryPath = yield fetchBinary(binaryName, version, userAgent);
         core.info(`Adding ` + binaryName + ` to PATH.`);
         core.addPath(binaryPath);
         let binary = yield io.which(binaryName);
