@@ -44,7 +44,7 @@ const hc = __importStar(__nccwpck_require__(483));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield hc.getHashicorpRelease("nomad-pack", "0.0.1-techpreview2");
+            yield hc.getHashicorpRelease("packer", "1.8.1");
         }
         catch (error) {
             if (error instanceof Error) {
