@@ -44,7 +44,7 @@ const hc = __importStar(__nccwpck_require__(483));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield hc.getHashicorpRelease("packer", "latest");
+            yield hc.getHashicorpRelease("packer", "");
         }
         catch (error) {
             if (error instanceof Error) {
@@ -53,7 +53,6 @@ function main() {
         }
     });
 }
-main();
 //# sourceMappingURL=index.js.map
 
 /***/ }),
