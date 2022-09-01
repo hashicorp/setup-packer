@@ -3,7 +3,7 @@ import * as hc from "@hashicorp/github-actions-core";
 
 async function main() {
   try {
-    await hc.getHashiCorpReleases("","");
+    await hc.getHashicorpRelease("packer", "latest");
   } catch (error) {
     if (error instanceof Error) {
       core.setFailed(error.message);
