@@ -44,7 +44,7 @@ const hc = __importStar(__nccwpck_require__(483));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield hc.getHashicorpRelease("packer", "");
+            yield hc.getHashicorpRelease("packer", "1.8.1");
         }
         catch (error) {
             if (error instanceof Error) {
@@ -2845,8 +2845,10 @@ const sys = __importStar(__nccwpck_require2_(5416));
 const child_process_1 = __importDefault(__nccwpck_require2_(2081));
 const path_1 = __importDefault(__nccwpck_require2_(1017));
 const assert_1 = __nccwpck_require2_(9491);
+core.warning(`inside setup-binary.ts`);
 function setupBinary(binaryName, version) {
     return __awaiter(this, void 0, void 0, function* () {
+        core.warning(`inside setup-binary function`);
         let userAgent = `setup-${binaryName} (GitHub Actions)`;
         let binaryPath = yield fetchBinary(version, binaryName, userAgent);
         core.info(`Adding ` + binaryName + ` to PATH.`);
@@ -2870,6 +2872,7 @@ function fetchBinary(binaryName, version, userAgent) {
         core.info(`userAgent ${userAgent}.`);
         core.info(`osPlatform ${osPlatform}.`);
         let release = yield hc.getRelease(binaryName, version, userAgent);
+        core.info(`hello`);
         const nameAndVersion = binaryName + ` ` + version;
         const nameAndPlatform = binaryName + `_${osPlatform}`;
         core.info(`Found ${nameAndVersion}.`);
