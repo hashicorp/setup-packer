@@ -22,7 +22,7 @@
     "@actions/core": "^1.9.1",
     "@actions/io": "^1.1.2",
     "@actions/tool-cache": "^2.0.1",
-    "@hashicorp/github-actions-core": "file:../packer-github-actions/"
+    "@hashicorp/github-actions-core": "file:../../ksatirli/github-actions-core/"
   },
   "devDependencies": {
     "@types/node": "^18.7.6",
