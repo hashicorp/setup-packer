@@ -16,13 +16,13 @@
     "hashicorp",
     "packer"
   ],
-  "author": "Kerim Satirli <kerim@hashicorp.com>",
+  "author": "Kerim Satirli <kerim@hashicorp.com> & Jenna Goldstrich <jgoldstrich@hashicorp.com>",
   "license": "Apache-2.0",
   "dependencies": {
     "@actions/core": "^1.9.1",
     "@actions/io": "^1.1.2",
     "@actions/tool-cache": "^2.0.1",
-    "@hashicorp/github-actions-core": "file:../../ksatirli/github-actions-core/"
+    "@hashicorp/github-actions-core": "file:../github-actions-core/"
   },
   "devDependencies": {
     "@types/node": "^18.7.6",
