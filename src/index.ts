@@ -1,9 +1,9 @@
 import * as core from "@actions/core";
-import {setupBinary} from "./setup-binary";
+import * as hc from "@hashicorp/github-actions-core";
 
 async function main() {
   try {
-    await setupBinary();
+    await hc.getHashiCorpReleases("","");
   } catch (error) {
     if (error instanceof Error) {
       core.setFailed(error.message);
