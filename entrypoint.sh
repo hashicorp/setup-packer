@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+set -o pipefail
 
 # fail if INPUT_COMMAND is not set
 if [ -z "${INPUT_COMMAND}" ]; then
@@ -30,5 +31,9 @@ for TARGET in "${TARGETS[@]}"; do
   echo "::debug:: Processing target ${TARGET}"
 
   # shellcheck disable=SC2086
-  ${OPERATION} "${TARGET}"
+  if [ -z "${INPUT_OUTPUT_FILE}" ]; then
+    ${OPERATION} "${TARGET}"
+  else
+    ${OPERATION} "${TARGET}" | tee -a "${INPUT_OUTPUT_FILE}"
+  fi
 done

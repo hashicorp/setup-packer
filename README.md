@@ -12,6 +12,7 @@
       - [`arguments`](#arguments)
       - [`target`](#target)
       - [`working_directory`](#working_directory)
+      - [`output_file`](#output_file)
   - [Detailed logs](#detailed-logs)
   - [Notes](#notes)
   - [Author Information](#author-information)
@@ -70,12 +71,13 @@ jobs:
 
 ### Inputs
 
-| Name                | Description                    | Required | Default |
-|---------------------|--------------------------------|----------|---------|
-| `command`           | command to execute             | yes      |         |
-| `arguments`         | arguments for command          | no       |         |
-| `target`            | file(s) or directory to target | no       |   `.`   |
-| `working_directory` | working directory for command  | no       |   `.`   |
+| Name                | Description                        | Required | Default |
+|---------------------|------------------------------------|----------|---------|
+| `command`           | command to execute                 | yes      |         |
+| `arguments`         | arguments for command              | no       |         |
+| `target`            | file(s) or directory to target     | no       |   `.`   |
+| `working_directory` | working directory for command      | no       |   `.`   |
+| `output_file`       | file for output of packer command  | no       |         |
 
 #### `command`
 
@@ -114,6 +116,10 @@ The arguments must be provided as a single string. Multiple arguments should be 
 #### `working_directory`
 
 `working_directory` supports a string consisting of a directory path. This should be a relative path in your repository where you want the packer command to run.
+
+#### `output_file`
+
+`output_file` supports a string consisting of a file path. The output of the packer command will be copied here. If left blank, no extra files are created.
 
 ## Detailed logs
 

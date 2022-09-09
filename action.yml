@@ -18,6 +18,9 @@ inputs:
     description: file(s) or directory to target
     required: false
     default: .
+  output_file:
+    description: file to capture output logs
+    required: false
 
 outputs:
   command:
