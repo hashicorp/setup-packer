@@ -18,6 +18,9 @@ inputs:
     description: file(s) or directory to target
     required: false
     default: .
+  docker-args:
+    description: Pass arguments to docker container
+    required: false
 
 outputs:
   command:
@@ -26,6 +29,8 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.docker-args }}
 
 branding:
   color: blue
