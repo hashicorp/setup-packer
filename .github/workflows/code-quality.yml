@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout Meta Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ${{ env.PARENT_ORG }}/${{ env.META_PATH }}
           ref: master
@@ -30,33 +30,33 @@ jobs:
           fetch-depth: 1
 
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
           path: ${{ env.SELF_PATH }}
 
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ env.PYTHON_ARCH }}
 
       - name: Update and Restore pip Binaries Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: cache-pip-binaries
         with:
           path: "${{ env.pythonLocation }}/bin"
           key: "pip-binaries-${{ env.PYTHON_VERSION }}-${{ env.PRECOMMIT_VERSION }}"
 
       - name: Update and Restore pip Packages Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: cache-pip-packages
         with:
           path: "${{ env.pythonLocation }}/lib/python${{ env.PYTHON_VERSION }}/site-packages"
           key: "pip-packages-${{ env.PYTHON_VERSION }}-${{ env.PRECOMMIT_VERSION }}"
 
       - name: Update and Restore pre-commit Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: cache-precommit-hooks
         with:
           path: "~/${{ env.PRECOMMIT_CACHE_PATH }}"

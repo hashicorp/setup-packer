@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # fix backwards incompatibilities in template
       - name: Fix Template
