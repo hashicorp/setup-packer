@@ -4,7 +4,7 @@ import * as hc from "@hashicorp/github-actions-core";
 async function main() {
   const version = core.getInput("version")
   if (version == null) {
-    core.setFailed("Field 'version' not set")
+    core.setFailed("Required field 'version' not set")
     return
   }
   try {
