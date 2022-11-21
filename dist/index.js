@@ -45,7 +45,7 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const version = core.getInput("version");
         if (version == null) {
-            core.setFailed("Field 'version' not set");
+            core.setFailed("Required field 'version' not set");
             return;
         }
         try {
@@ -24010,7 +24010,7 @@ function fetchBinary(binaryName, version, userAgent) {
         core.info(`userAgent ${userAgent}.`);
         const isValidVersion = semver.validRange(version);
         if (!isValidVersion && version !== "latest") {
-            throw "Invalid version, only valid semver versions or 'latest' are allowed";
+            throw new Error("Invalid version, only valid semver versions or 'latest' are allowed");
         }
         let release = yield hc.getRelease(binaryName, version, userAgent);
         const nameAndVersion = binaryName + ` ` + version;
