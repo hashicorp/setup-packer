@@ -6,7 +6,6 @@
     "outDir": "./dist",
     "pretty": true,
     "removeComments": true,
-    "rootDir": "./src",
     "sourceMap": true,
     "strict": true
   },
