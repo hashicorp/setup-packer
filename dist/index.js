@@ -43,8 +43,13 @@ const core = __importStar(__nccwpck_require__(2186));
 const hc = __importStar(__nccwpck_require__(8647));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
+        const version = core.getInput("version");
+        if (version == null) {
+            core.setFailed("Field 'version' not set");
+            return;
+        }
         try {
-            yield hc.getHashicorpRelease("packer", core.getInput("packer-version"));
+            yield hc.getHashicorpRelease("packer", version);
         }
         catch (error) {
             if (error instanceof Error) {
