@@ -24910,8 +24910,10 @@ const core = __importStar(__nccwpck_require__(7538));
 const setup_binary_1 = __nccwpck_require__(2850);
 function getHashicorpRelease(binary, version) {
     return __awaiter(this, void 0, void 0, function* () {
-        core.info(`binary ${binary}`);
-        core.info(`version ${version}`);
+        if (version !== "") {
+            version = "latest";
+        }
+        core.info(`Installing ${binary}:${version} and adding it to GitHub Actions Path`);
         try {
             yield (0, setup_binary_1.setupBinary)(binary, version);
         }
@@ -24982,8 +24984,8 @@ function setupBinary(binaryName, version) {
     return __awaiter(this, void 0, void 0, function* () {
         let userAgent = `setup-${binaryName} (GitHub Actions)`;
         let binaryPath = yield fetchBinary(binaryName, version, userAgent);
-        core.info(`Adding ` + binaryName + ` to PATH.`);
         core.addPath(binaryPath);
+        core.info(`${binaryName}:${version} added to path`);
         let binary = yield io.which(binaryName);
         let binaryVersion = (child_process_1.default.execSync(`${binary} version`) || "").toString();
         core.setOutput("version", parseVersion(binaryVersion));
@@ -24996,7 +24998,7 @@ function fetchBinary(binaryName, version, userAgent) {
         const osArch = sys.getArch();
         const tmpDir = getTempDir();
         let binaryPath;
-        core.info(`Finding release that matches ${version}.`);
+        core.debug(`Finding release that matches ${version}.`);
         const isValidVersion = semver.validRange(version);
         if (!isValidVersion && version !== "latest") {
             throw new Error("Invalid version, only valid semver versions or 'latest' are allowed");
@@ -25004,29 +25006,29 @@ function fetchBinary(binaryName, version, userAgent) {
         let release = yield hc.getRelease(binaryName, version, userAgent);
         const nameAndVersion = binaryName + ` ` + version;
         const nameAndPlatform = binaryName + `_${osPlatform}`;
-        core.info(`Found ${nameAndVersion}.`);
-        core.info(`Checking cache for ${nameAndVersion}.`);
+        core.debug(`Found ${nameAndVersion}.`);
+        core.debug(`Checking cache for ${nameAndVersion}.`);
         core.debug(`Cache binary: ${nameAndPlatform}`);
         binaryPath = cache.find(nameAndPlatform, version);
         if (binaryPath) {
-            core.info(`Found ${nameAndVersion} in cache at ${binaryPath}.`);
+            core.debug(`Found ${nameAndVersion} in cache at ${binaryPath}.`);
             return binaryPath;
         }
-        core.info(`${nameAndVersion} not found in cache.`);
-        core.info(`Getting download URL for ${nameAndVersion}.`);
+        core.debug(`${nameAndVersion} not found in cache.`);
+        core.debug(`Getting download URL for ${nameAndVersion}.`);
         let build = release.getBuild(osPlatform, osArch);
         core.debug(`Download URL: ${build.url}`);
         core.info(`Downloading ${build.filename}.`);
         let downloadPath = path_1.default.join(tmpDir, build.filename);
         core.debug(`Download path: ${downloadPath}`);
         yield release.download(build.url, downloadPath, userAgent);
-        core.info(`Verifying ${build.filename}.`);
+        core.debug(`Verifying ${build.filename}.`);
         yield release.verify(downloadPath, build.filename);
-        core.info(`Extracting ${build.filename}.`);
+        core.debug(`Extracting ${build.filename}.`);
         const extractedPath = yield cache.extractZip(downloadPath);
         core.debug(`Extracted path: ${extractedPath}`);
         binaryPath = yield cache.cacheDir(extractedPath, nameAndPlatform, version);
-        core.info(`Cached ${nameAndVersion} at ${binaryPath}.`);
+        core.debug(`Cached ${nameAndVersion} at ${binaryPath}.`);
         return binaryPath;
     });
 }
