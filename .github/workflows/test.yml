@@ -1,4 +1,4 @@
-name: packer
+name: test
 
 on:
   push:
@@ -7,11 +7,12 @@ on:
 jobs:
   setup-packer:
     runs-on: ubuntu-latest
-    name: Run Packer
+    name: Test setup-packer
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
+      ## TODO: should use whatever current branch is, not hardcoded brnach
       - name: Setup `packer` from renamed action
         uses: hashicorp/packer-github-actions@rewrite-to-typescript
         id: setup
@@ -56,6 +57,7 @@ jobs:
         uses: hashicorp/packer-github-actions@rewrite-to-typescript
         id: latest
 
+     ## TODO, don't hardcode version
       - name: Validate Packer version is latest (currently hardcoded, need to refactor)
         run: if packer version | grep -q "Packer v1.8.4"; then echo "passed"; else exit 1; fi;
 
