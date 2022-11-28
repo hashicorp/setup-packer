@@ -24910,7 +24910,7 @@ const core = __importStar(__nccwpck_require__(7538));
 const setup_binary_1 = __nccwpck_require__(2850);
 function getHashicorpRelease(binary, version) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (version !== "") {
+        if (version === "") {
             version = "latest";
         }
         core.info(`Installing ${binary}:${version} and adding it to GitHub Actions Path`);
