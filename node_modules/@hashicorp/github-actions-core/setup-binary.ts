@@ -2,8 +2,8 @@ import * as core from "@actions/core";
 import * as hc from "@hashicorp/js-releases";
 import * as io from "@actions/io";
 import * as cache from "@actions/tool-cache";
-import {getPlatform, getArch} from "./system";
 import * as semver from "semver";
+import os from "os";
 import cp from "child_process";
 import path from "path";
 import { ok } from "assert";
@@ -89,4 +89,39 @@ function getTempDir(): string {
   const tmpDir = process.env["RUNNER_TEMP"] || "";
   ok(tmpDir, "Expected RUNNER_TEMP to be defined");
   return tmpDir;
+}
+
+
+function getPlatform(): string {
+  const platform = os.platform();
+  switch (platform) {
+    case "darwin":
+      return "darwin";
+    case "freebsd":
+      return "freebsd";
+    case "linux":
+      return "linux";
+    case "openbsd":
+      return "openbsd";
+    case "win32":
+      return "windows";
+    default:
+      throw new Error(`Unsupported operating system platform: ${platform}`);
+  }
+}
+
+function getArch(): string {
+  const arch = os.arch();
+  switch (arch) {
+    case "arm":
+      return "arm";
+    case "arm64":
+      return "arm64";
+    case "x32":
+      return "386";
+    case "x64":
+      return "amd64";
+    default:
+      throw new Error(`Unsupported operating system architecture: ${arch}`);
+  }
 }
