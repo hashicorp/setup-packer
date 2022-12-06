@@ -29,10 +29,7 @@ jobs:
           cache: 'npm'
 
       - name: Install NPM Packages
-        run: npm install
-
-      - name: Format TypeScript code
-        run: npm run-script fmt
+        run: npm ci
 
       - name: Build TypeScript code
-        run: npm run-script build
+        run: npm run build
