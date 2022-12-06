@@ -2,7 +2,7 @@ import * as core from "@actions/core";
 import * as hc from "@hashicorp/js-releases";
 import * as io from "@actions/io";
 import * as cache from "@actions/tool-cache";
-import * as sys from "./system";
+import {getPlatform, getArch} from "./system";
 import * as semver from "semver";
 import cp from "child_process";
 import path from "path";
@@ -25,8 +25,8 @@ async function fetchBinary(
   version: string,
   userAgent: string
 ): Promise<string> {
-  const osPlatform = sys.getPlatform();
-  const osArch = sys.getArch();
+  const osPlatform = getPlatform();
+  const osArch = getArch();
   const tmpDir = getTempDir();
 
   let binaryPath: string;
