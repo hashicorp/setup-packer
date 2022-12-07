@@ -1,0 +1,27 @@
+---
+name: "Code Quality: Lint"
+
+on:
+  push:
+
+jobs:
+  linter:
+    name: Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install NPM Packages
+        run: npm ci
+
+      - name: Lint Code
+        run: npm run lint
