@@ -1,32 +1,19 @@
 ---
 
-name: Packer GitHub Actions
-author: Kerim Satirli <kerim@operatehappy.com>
-description: Run Packer commands
-
+name: "Setup HashiCorp Packer"
+author: "Kerim Satirli"
+description: "A GitHub Action to install a specific version of HashiCorp Packer and add it to PATH."
 inputs:
-  command:
-    description: command to execute
+  version:
+    description: "The Packer version to install and add to PATH."
     required: true
-  arguments:
-    description: arguments for command
-    required: false
-  working_directory:
-    description: working directory for command (defaults to root)
-    required: false
-  target:
-    description: file(s) or directory to target
-    required: false
-    default: .
-
+    default: "latest"
 outputs:
-  command:
-    description: interpolated command (incl. arguments) that will be executed
-
+  version:
+    description: "The Packer version that was installed and added to PATH."
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-
+  using: "node16"
+  main: "dist/index.js"
 branding:
-  color: blue
-  icon: package
+  icon: "package"
+  color: "blue"

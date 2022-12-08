@@ -1,151 +1,85 @@
-# GitHub Action: Packer
+# GitHub Action: setup-packer
 
-> GitHub Action for running Packer [commands](https://www.packer.io/docs/commands).
+The `hashicorp/setup-packer` Action sets up the `packer` CLI in your GitHub Actions workflow by adding the binary to `PATH`.
 
 ## Table of Contents
 
-- [GitHub Action: Packer](#github-action-packer)
+- [GitHub Action: setup-packer](#github-action-setup-packer)
   - [Table of Contents](#table-of-contents)
+  - [Requirements](#requirements)
   - [Usage](#usage)
-    - [Inputs](#inputs)
-      - [`command`](#command)
-      - [`arguments`](#arguments)
-      - [`target`](#target)
-      - [`working_directory`](#working_directory)
-  - [Detailed logs](#detailed-logs)
-  - [Notes](#notes)
   - [Author Information](#author-information)
   - [License](#license)
 
+## Requirements
+
+This GitHub Actions supports all commands that are available in the `packer` CLI.
+
+The [`build`](https://www.packer.io/docs/commands/build) command may require access to provider-specific credentials.
+
+Other [environment variables](https://www.packer.io/docs/commands#environment-variables) (such as `PACKER_LOG`) may be set as normal and will be picked up accordingly.
+
 ## Usage
 
-Add the Action to your [GitHub Workflow](https://docs.github.com/en/actions/learn-github-actions#creating-a-workflow-file) like so:
+1.) Create a GitHub Actions Workflow file (e.g.: `.github/workflows/packer.yml`):
 
 ```yaml
----
-
-name: Packer
+name: packer
 
 on:
-  push:
+  - push
 
 jobs:
   packer:
     runs-on: ubuntu-latest
-    name: packer
-
+    name: Run Packer
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      # fix backwards incompatibilities in template
-      - name: Fix Template
-        uses: hashicorp/packer-github-actions@master
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
         with:
-          command: fix
+          version: "1.8.3" # or `latest`
 
-      # validate templates
-      - name: Validate Template
-        uses: hashicorp/packer-github-actions@master
-        with:
-          command: validate
-          arguments: -syntax-only
-          target: packer.pkr.hcl
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./image.pkr.hcl"
 
-      # build artifact
-      - name: Build Artifact
-        uses: hashicorp/packer-github-actions@master
-        with:
-          command: build
-          arguments: "-color=false -on-error=abort"
-          target: packer.pkr.hcl
-          working_directory: infrastructure/packer
-        env:
-          PACKER_LOG: 1
-          HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
-          HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
-
-      # additional steps to process artifacts
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./image.pkr.hcl"
 ```
 
-### Inputs
+In the above example, the following definitions have been set.
 
-| Name                | Description                    | Required | Default |
-|---------------------|--------------------------------|----------|---------|
-| `command`           | command to execute             | yes      |         |
-| `arguments`         | arguments for command          | no       |         |
-| `target`            | file(s) or directory to target | no       |   `.`   |
-| `working_directory` | working directory for command  | no       |   `.`   |
+- The event trigger has been set to `push`. For a complete list, see [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+- The origin of this GitHub Action has been set as `hashicorp/setup-packer@main`. For newer versions, see the [Releases](https://github.com/hashicorp/setup-packer/releases).
+- The version of `packer` to set up has been set as `1.8.3`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
+- The Packer manifest to interact with has been set as `./image.pkr.hcl`
 
-#### `command`
+These definitions may require updating to suit your deployment, such as specifying [self-hosted](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-self-hosted-runners) runners.
 
-`command` supports the following subset of Packer [CLI commands](https://packer.io/docs/commands/index.html):
+Additionally, you may configure [outputs](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-defining-outputs-for-a-job) to consume return values from the Action's operations.
 
-- [init](https://www.packer.io/docs/commands/init) to download Packer plugin binaries
-- [build](https://www.packer.io/docs/commands/build) to generate a set of artifacts from a template
-- [fix](https://www.packer.io/docs/commands/fix) to find and correct backwards incompatible stanzas in a template
-- [validate](https://www.packer.io/docs/commands/validate) to validate the syntax and configuration of a template
+## Inputs
 
-Other CLI commands (`console`, `inspect` and `version`) are _technically_ supported, but have limited utility in a GitHub Actions Workflow, due to their interactive nature.
+This section contains a list of all inputs that may be set for this Action.
 
-#### `arguments`
+- `version` - (required) The version of `packer` to install. Defaults to `latest`.
 
-`arguments` supports all options available for the respective `command`.
+## Outputs
 
-The arguments must be provided as a single string. Multiple arguments should be concatenated like so: `-color=false -on-error=abort`
+This section contains a list of all outputs that can be consumed from this Action.
 
-#### `target`
-
-`target` supports a string consisting of one or more file or directory paths:
-
- ```yaml
-    # single file
-    target: artifacts.pkr.hcl
-
-    # multiple files, separated by whitespace
-    target: artifacts.pkr.hcl packer.pkr.hcl
-
-    # working directory
-    target: .
-```
-
- The Action will iterate over each file and run each `command`, separately.
-
-#### `working_directory`
-
-`working_directory` supports a string consisting of a directory path. This should be a relative path in your repository where you want the packer command to run.
-
-## Detailed logs
-
-Packer has an option to enable more detailed logs by setting the `PACKER_LOG` environment variable.
-Any value other than `""` (empty string) and `"0"`, will cause detailed logs to appear on stderr.
-
-To set `PACKER_LOG=1`, simply define the environment variable in the step configuration like:
-
-```yaml
-  # build artifact
-  - name: Build Artifact
-    uses: hashicorp/packer-github-actions@master
-    with:
-      command: build
-      arguments: "-color=false -on-error=abort"
-      target: packer.pkr.hcl
-    env:
-      PACKER_LOG: 1
-```
-
-## Notes
-
-- To enable debug logging, create a secret named `ACTIONS_STEP_DEBUG` with the value `true`. See [here](https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-a-debug-message) for more information.
-
-- If you want to use HCP Packer as central image repository, do not forget to add HCP Secrets under your repo settings. See [here](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md)
-- When using [HCP Packer Registry](https://cloud.hashicorp.com/docs/packer), you will need to set `HCP_CLIENT_ID` and `HCP_CLIENT_SECRET` environment variables to your job steps. See [Service Principals](https://cloud.hashicorp.com/docs/hcp/access-control/service-principals) guide for how you can generate these credentials, and [Encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) guide for how you can configure and reference secrets in your Actions.
+- `version` -  The version of `packer` that was installed.
 
 ## Author Information
 
-This module is maintained by the contributors listed on [GitHub](https://github.com/hashicorp/packer-github-actions/graphs/contributors).
+This GitHub Action is maintained by the contributors listed on [GitHub](https://github.com/hashicorp/setup-packer/graphs/contributors).
 
-Development of this module was sponsored by [Operate Happy](https://github.com/operatehappy).
+The original code of this repository is based on work done by [Matthew Sanabria](https://github.com/sudomateo) as part of the [setup-packer](https://github.com/sudomateo/setup-packer) GitHub Action.
 
 ## License
 

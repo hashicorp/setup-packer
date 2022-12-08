@@ -1,0 +1,19 @@
+version: v1.25.0
+
+# see https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/the-.snyk-file?q=
+ignore:
+  # see https://security.snyk.io/vuln/snyk:lic:npm:hashicorp:js-releases:MPL-2.0]
+  'snyk:lic:npm:hashicorp:js-releases:MPL-2.0':
+    - '@hashicorp/js-releases':
+        reason: acceptable license
+        expires: 2023-12-31T00:00:00.000Z
+        created: 2022-08-16T00:00:00.000Z
+
+  # see https://security.snyk.io/vuln/snyk:lic:npm:openpgp:LGPL-3.0
+  'snyk:lic:npm:openpgp:LGPL-3.0':
+    - '@hashicorp/js-releases > openpgp':
+        reason: acceptable license
+        expires: 2023-12-31T00:00:00.000Z
+        created: 2022-08-16T00:00:00.000Z
+
+patch: {}

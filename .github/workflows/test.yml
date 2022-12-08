@@ -1,0 +1,70 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  setup-packer:
+    runs-on: ubuntu-latest
+    name: Test setup-packer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      ## TODO: should use whatever current branch is, not hardcoded brnach
+      - name: Setup `packer` from renamed action
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: "1.8.1"
+
+      - name: Print `$PATH`
+        run: which packer
+
+      - name: Print packer version
+        run: packer version
+
+      - name: Validate Packer version is latest (1.8.1)
+        run: if packer version | grep -q "Packer v1.8.1"; then echo "passed"; else exit 1; fi;
+
+      - name: Run `packer` init
+        run: packer init "${{ github.action_path }}./test/hello-world.pkr.hcl"
+
+      - name: Try to setup packer for an invalid verison
+        uses: hashicorp/setup-packer@main
+        id: ranch
+        with:
+          version: "ranch"
+        continue-on-error: true
+
+      - name: Validate invalid version failed
+        if: steps.ranch.outcome == 'success'
+        run: echo "Installing an invalid version expected to fail but did not" && exit 1
+
+      - name: Try to setup packer for a verison that has yet to be released
+        uses: hashicorp/setup-packer@main
+        id: packer3
+        with:
+          version: "3.0.0"
+        continue-on-error: true
+
+      - name: Validate invalid version failed
+        if: steps.packer3.outcome == 'success'
+        run: echo "Installing a non existant expected to fail but did not" && exit 1
+
+      - name: No version defaults to latest
+        uses: hashicorp/setup-packer@main
+        id: latest
+
+     ## TODO, don't hardcode version
+      - name: Validate Packer version is latest (currently hardcoded, need to refactor)
+        run: if packer version | grep -q "Packer v1.8.4"; then echo "passed"; else exit 1; fi;
+
+      - name: Print packer version
+        run: packer version
+
+      - name: Run `packer` init
+        run: packer init "${{ github.action_path }}./test/hello-world.pkr.hcl"
