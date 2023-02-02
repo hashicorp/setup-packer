@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import * as core from "@actions/core";
 import * as hc from "@hashicorp/github-actions-core";
 

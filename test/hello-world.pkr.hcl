@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
 # file: builds.pkr.hcl
 source "file" "basic-example" {
   content = "Lorem ipsum dolor sit amet"
