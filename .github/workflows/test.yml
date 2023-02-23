@@ -15,7 +15,7 @@ jobs:
         uses: "./"
         id: setup
         with:
-          version: "1.5.0-beta.1"
+          version: "1.8.6"
 
       - name: Print `$PATH` for `packer`
         run: which packer
@@ -23,8 +23,8 @@ jobs:
       - name: Print `packer` version
         run: packer version
 
-      - name: Validate `packer` version is latest (`1.5.0-beta.1``)
-        run: "if packer version | grep -q 'Nomad v1.5.0-beta.1'; then exit 0; else exit 1; fi;"
+      - name: Validate `packer` version is latest (`1.8.6``)
+        run: "if packer version | grep -q 'Nomad v1.8.6'; then exit 0; else exit 1; fi;"
 
       - name: Run `packer fmt`
         run: packer fmt "${{ github.action_path }}./test/hello-world.pkr.hcl"
