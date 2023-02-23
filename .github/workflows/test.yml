@@ -24,7 +24,7 @@ jobs:
         run: packer version
 
       - name: Validate `packer` version is latest (`1.8.6``)
-        run: "if packer version | grep -q 'Nomad v1.8.6'; then exit 0; else exit 1; fi;"
+        run: "if packer version | grep -q 'Packer v1.8.6'; then exit 0; else exit 1; fi;"
 
       - name: Run `packer fmt`
         run: packer fmt "${{ github.action_path }}./test/hello-world.pkr.hcl"
