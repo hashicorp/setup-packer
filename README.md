@@ -83,6 +83,8 @@ This section contains a list of all outputs that can be consumed from this Actio
 ## Integrating with HCP Packer
 To integrate with HCP Packer, add your HCP Client ID and HCP Client secret as environment variables to the Packer build call.
 
+We add an HCP_PACKER_BUILD_FINGERPRINT in this example that is based on the workflow run ID, that way it is always unique
+
 We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) (as opposed to plain-text). See the [HCP Packer Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata)
 
 ```
@@ -118,6 +120,7 @@ hcp-packer
         env:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
+          HCP_PACKER_BUILD_FINGERPRINT: ${{ github.run_id }}
 ```
 
 
