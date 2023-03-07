@@ -87,7 +87,7 @@ We add an `HCP_PACKER_BUILD_FINGERPRINT` in this example that is based on the wo
 
 We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) (as opposed to plain-text). See the [HCP Packer Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata)
 
-```
+```yaml
 name: hcp-packer
 on:
   - push
