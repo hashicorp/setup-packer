@@ -111,7 +111,7 @@ jobs:
         run: "packer validate ./image.pkr.hcl"
 
       - name: Build Artifact
-        run: packer build -color=false -on-error=abort image.pkr.hcl
+        run: packer build -color=false -on-error=abort ./image.pkr.hcl
         env:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
