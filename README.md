@@ -90,7 +90,7 @@ on:
   - push
 
 jobs:
-  packer:
+hcp-packer
     runs-on: ubuntu-latest
     name: Run Packer
     steps:
