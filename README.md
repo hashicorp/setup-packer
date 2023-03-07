@@ -11,6 +11,7 @@ The `hashicorp/setup-packer` Action sets up the [Packer](https://www.packer.io) 
   * [Usage](#usage)
   * [Inputs](#inputs)
   * [Outputs](#outputs)
+  * [Integrating with HCP Packer](#Integrating-with-HCP-Packer)
   * [Author Information](#author-information)
   * [License](#license)
 <!-- TOC -->
@@ -78,6 +79,44 @@ This section contains a list of all inputs that may be set for this Action.
 This section contains a list of all outputs that can be consumed from this Action.
 
 - `version` -  The version of `packer` that was installed.
+
+## Integrating with HCP Packer
+To integrate with HCP Packer, add your HCP Client ID and HCP Client secret as environment variables to the Packer build call.
+
+We add an `HCP_PACKER_BUILD_FINGERPRINT` in this example that is based on the workflow run ID, that way it is always unique
+
+We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) (as opposed to plain-text). See the [HCP Packer Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata)
+
+```
+name: hcp-packer
+on:
+  - push
+jobs:
+  hcp-packer:
+    runs-on: ubuntu-latest
+    name: Run Packer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: "latest"
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./image.pkr.hcl"
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./image.pkr.hcl"
+
+      - name: Build Artifact
+        run: packer build -color=false -on-error=abort image.pkr.hcl
+        env:
+          HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
+          HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
+          HCP_PACKER_BUILD_FINGERPRINT: run.id.${{ github.run_id }}.run.attempt.${{ github.run_attempt }}
+```
 
 ## Author Information
 
