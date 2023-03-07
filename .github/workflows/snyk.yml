@@ -8,6 +8,11 @@ jobs:
   snyk:
     runs-on: ubuntu-latest
 
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
     strategy:
       # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategyfail-fast
       fail-fast: false
@@ -28,8 +33,8 @@ jobs:
           # see https://github.com/snyk/actions/tree/master/node#uploading-snyk-scan-results-to-github-code-scanning
           args: --policy-path=.snyk --sarif-file-output=snyk.sarif --org=${{ secrets.SNYK_ORG }}
 
-#      # see https://github.com/github/codeql-action/tree/main/upload-sarif
-#      - name: Upload Snyk IaC results to GitHub Code Scanning
-#        uses: github/codeql-action/upload-sarif@v2
-#        with:
-#          sarif_file: snyk.sarif
+      # see https://github.com/github/codeql-action/tree/main/upload-sarif
+      - name: Upload Snyk IaC results to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
