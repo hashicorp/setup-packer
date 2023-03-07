@@ -1,23 +1,27 @@
-# GitHub Action: setup-packer
+# GitHub Action: `setup-packer`
 
-The `hashicorp/setup-packer` Action sets up the `packer` CLI in your GitHub Actions workflow by adding the binary to `PATH`. For the action formely named `hashicorp/packer-github-actions` see the `master` branch
+The `hashicorp/setup-packer` Action sets up the [Packer](https://www.packer.io) CLI in your GitHub Actions workflow by adding the `packer` binary to `PATH`.
 
 ## Table of Contents
 
-- [GitHub Action: setup-packer](#github-action-setup-packer)
-  - [Table of Contents](#table-of-contents)
-  - [Requirements](#requirements)
-  - [Usage](#usage)
-  - [Author Information](#author-information)
-  - [License](#license)
+<!-- TOC -->
+* [GitHub Action: `setup-packer`](#github-action--setup-packer)
+  * [Table of Contents](#table-of-contents)
+  * [Requirements](#requirements)
+  * [Usage](#usage)
+  * [Inputs](#inputs)
+  * [Outputs](#outputs)
+  * [Author Information](#author-information)
+  * [License](#license)
+<!-- TOC -->
 
 ## Requirements
 
 This GitHub Actions supports all commands that are available in the `packer` CLI.
 
-The [`build`](https://www.packer.io/docs/commands/build) command may require access to provider-specific credentials.
+The [`build`](https://developer.hashicorp.com/packer/docs/commands/build) command may require access to provider-specific credentials.
 
-Other [environment variables](https://www.packer.io/docs/commands#environment-variables) (such as `PACKER_LOG`) may be set as normal and will be picked up accordingly.
+Other [environment variables](https://developer.hashicorp.com/packer/docs/commands#environment-variables) (such as `PACKER_LOG`) may be set as normal and will be picked up accordingly.
 
 ## Usage
 
@@ -41,7 +45,7 @@ jobs:
         uses: hashicorp/setup-packer@main
         id: setup
         with:
-          version: "1.8.3" # or `latest`
+          version: "1.8.6" # or `latest`
 
       - name: Run `packer init`
         id: init
@@ -56,7 +60,7 @@ In the above example, the following definitions have been set.
 
 - The event trigger has been set to `push`. For a complete list, see [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 - The origin of this GitHub Action has been set as `hashicorp/setup-packer@main`. For newer versions, see the [Releases](https://github.com/hashicorp/setup-packer/releases).
-- The version of `packer` to set up has been set as `1.8.3`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
+- The version of `packer` to set up has been set as `1.8.6`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
 - The Packer manifest to interact with has been set as `./image.pkr.hcl`
 
 These definitions may require updating to suit your deployment, such as specifying [self-hosted](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-self-hosted-runners) runners.
