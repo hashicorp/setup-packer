@@ -89,28 +89,23 @@ We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/e
 
 ```
 name: hcp-packer
-
 on:
   - push
-
 jobs:
-hcp-packer
+  hcp-packer:
     runs-on: ubuntu-latest
     name: Run Packer
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
         id: setup
         with:
           version: "latest"
-
       - name: Run `packer init`
         id: init
         run: "packer init ./image.pkr.hcl"
-
       - name: Run `packer validate`
         id: validate
         run: "packer validate ./image.pkr.hcl"
@@ -120,9 +115,8 @@ hcp-packer
         env:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
-          HCP_PACKER_BUILD_FINGERPRINT: ${{ github.run_id }}
+          HCP_PACKER_BUILD_FINGERPRINT: run.id.${{ github.run_id }}.run.attempt.${{ github.run_attempt }}
 ```
-
 
 ## Author Information
 
