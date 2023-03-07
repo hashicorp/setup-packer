@@ -81,7 +81,9 @@ This section contains a list of all outputs that can be consumed from this Actio
 - `version` -  The version of `packer` that was installed.
 
 ## Integrating with HCP Packer
-To integrate with HCP Packer simply add your client ID and client secret as environment variables to the Packer build call, we reccomend storing these in GitHub secrets and not in plain text.  See the [HCP Packer Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata)
+To integrate with HCP Packer, add your HCP Client ID and HCP Client secret as environment variables to the Packer build call.
+
+We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) (as opposed to plain-text). See the [HCP Packer Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata)
 
 ```
 name: hcp-packer
