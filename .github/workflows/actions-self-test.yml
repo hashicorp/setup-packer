@@ -30,7 +30,7 @@ jobs:
         run: "packer version | grep --silent 'Packer v${{ env.PRODUCT_VERSION }}'"
 
       - name: Run `packer fmt`
-        run: packer fmt "./test/hello-world.pkr.hcl"
+        run: packer fmt -check "./test/hello-world.pkr.hcl"
 
       - name: Setup `packer` with an invalid version (using local GitHub Action)
         uses: "./"
