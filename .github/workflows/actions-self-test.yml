@@ -8,8 +8,8 @@ env:
 
 jobs:
   setup-packer:
-    runs-on: ubuntu-latest
     name: Test `setup-packer`
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
