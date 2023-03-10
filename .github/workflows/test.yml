@@ -3,6 +3,9 @@ name: "GitHub Action: Self-Test"
 on:
   push:
 
+env:
+  PRODUCT_VERSION: "1.8.6"
+
 jobs:
   setup-packer:
     runs-on: ubuntu-latest
@@ -15,7 +18,7 @@ jobs:
         uses: "./"
         id: setup
         with:
-          version: "1.8.6"
+          version: ${{ env.PRODUCT_VERSION }}
 
       - name: Print `$PATH` for `packer`
         run: which packer
@@ -23,11 +26,11 @@ jobs:
       - name: Print `packer` version
         run: packer version
 
-      - name: Validate `packer` version is latest (`1.8.6``)
-        run: "if packer version | grep -q 'Packer v1.8.6'; then exit 0; else exit 1; fi;"
+      - name: Validate `packer` version is accurate
+        run: "packer version | grep --silent 'Packer {{ env.PRODUCT_VERSION }}'"
 
       - name: Run `packer fmt`
-        run: packer fmt "${{ github.action_path }}./test/hello-world.pkr.hcl"
+        run: packer fmt "${{ github.action_path }}/test/hello-world.pkr.hcl"
 
       - name: Setup `packer` with an invalid version (using local GitHub Action)
         uses: "./"

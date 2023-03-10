@@ -32,7 +32,10 @@ Other [environment variables](https://developer.hashicorp.com/packer/docs/comman
 name: packer
 
 on:
-  - push
+  push:
+
+env:
+  PRODUCT_VERSION: "1.8.6" # or: "latest"
 
 jobs:
   packer:
@@ -46,7 +49,7 @@ jobs:
         uses: hashicorp/setup-packer@main
         id: setup
         with:
-          version: "1.8.6" # or `latest`
+          version: ${{ env.PRODUCT_VERSION }}
 
       - name: Run `packer init`
         id: init
