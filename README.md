@@ -2,6 +2,8 @@
 
 The `hashicorp/setup-packer` Action sets up the [Packer](https://www.packer.io) CLI in your GitHub Actions workflow by adding the `packer` binary to `PATH`.
 
+[![GitHub Action: Self-Test](https://github.com/hashicorp/setup-packer/actions/workflows/actions-self-test.yml/badge.svg?branch=main)](https://github.com/hashicorp/setup-packer/actions/workflows/actions-self-test.yml)
+
 ## Table of Contents
 
 <!-- TOC -->
