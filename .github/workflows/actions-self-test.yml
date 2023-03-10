@@ -27,7 +27,7 @@ jobs:
         run: packer version
 
       - name: Validate `packer` version is accurate
-        run: "packer version | grep --silent 'Packer {{ env.PRODUCT_VERSION }}'"
+        run: "packer version | grep --silent 'Packer ${{ env.PRODUCT_VERSION }}'"
 
       - name: Run `packer fmt`
         run: packer fmt "${{ github.action_path }}/test/hello-world.pkr.hcl"
