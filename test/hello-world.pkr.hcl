@@ -4,16 +4,16 @@
 # file: builds.pkr.hcl
 source "file" "basic-example" {
   content = "Lorem ipsum dolor sit amet"
-  target = "sample_artifact"
+  target  = "sample_artifact"
 }
 
 variable "bucket_name" {
-  type = string
+  type    = string
   default = "hello-world"
 }
 
 build {
-   hcp_packer_registry {
+  hcp_packer_registry {
     bucket_name = "${var.bucket_name}"
 
     description = <<EOT
@@ -22,7 +22,7 @@ Some nice description about the image which artifact is being published to HCP P
 
     labels = {
       "foo-version" = "3.4.0",
-      "foo" = "bar",
+      "foo"         = "bar",
     }
   }
 
