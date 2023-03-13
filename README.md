@@ -94,8 +94,10 @@ We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/e
 
 ```yaml
 name: hcp-packer
+
 on:
   - push
+
 jobs:
   hcp-packer:
     runs-on: ubuntu-latest
@@ -120,7 +122,7 @@ jobs:
         env:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
-          HCP_PACKER_BUILD_FINGERPRINT: run.id.${{ github.run_id }}.run.attempt.${{ github.run_attempt }}
+          HCP_PACKER_BUILD_FINGERPRINT: "run.id.${{ github.run_id }}.run.attempt.${{ github.run_attempt }}"
 ```
 
 ## Author Information
