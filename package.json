@@ -1,6 +1,6 @@
 {
   "name": "setup-packer",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A GitHub Action to install a specific version of HashiCorp Packer and add it to PATH.",
   "keywords": [
     "github-actions",
