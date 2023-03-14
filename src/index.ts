@@ -7,10 +7,10 @@ import * as core from "@actions/core";
 import * as hc from "@hashicorp/github-actions-core";
 
 async function main() {
-  const version = core.getInput("version")
+  const version = core.getInput("version");
   if (version == null) {
-    core.setFailed("Required field 'version' not set")
-    return
+    core.setFailed("Required field 'version' not set");
+    return;
   }
   try {
     await hc.getHashicorpRelease("packer", version);
