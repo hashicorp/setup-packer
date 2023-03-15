@@ -2,6 +2,8 @@
 
 The `hashicorp/setup-packer` Action sets up the [Packer](https://www.packer.io) CLI in your GitHub Actions workflow by adding the `packer` binary to `PATH`.
 
+[![GitHub Action: Self-Test](https://github.com/hashicorp/setup-packer/actions/workflows/actions-self-test.yml/badge.svg?branch=main)](https://github.com/hashicorp/setup-packer/actions/workflows/actions-self-test.yml)
+
 ## Table of Contents
 
 <!-- TOC -->
@@ -32,7 +34,10 @@ Other [environment variables](https://developer.hashicorp.com/packer/docs/comman
 name: packer
 
 on:
-  - push
+  push:
+
+env:
+  PRODUCT_VERSION: "1.8.6" # or: "latest"
 
 jobs:
   packer:
@@ -46,7 +51,7 @@ jobs:
         uses: hashicorp/setup-packer@main
         id: setup
         with:
-          version: "1.8.6" # or `latest`
+          version: ${{ env.PRODUCT_VERSION }}
 
       - name: Run `packer init`
         id: init
@@ -89,8 +94,10 @@ We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/e
 
 ```yaml
 name: hcp-packer
+
 on:
   - push
+
 jobs:
   hcp-packer:
     runs-on: ubuntu-latest
@@ -115,7 +122,7 @@ jobs:
         env:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
-          HCP_PACKER_BUILD_FINGERPRINT: run.id.${{ github.run_id }}.run.attempt.${{ github.run_attempt }}
+          HCP_PACKER_BUILD_FINGERPRINT: "run.id.${{ github.run_id }}.run.attempt.${{ github.run_attempt }}"
 ```
 
 ## Author Information
