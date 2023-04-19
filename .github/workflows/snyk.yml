@@ -19,13 +19,13 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
           fetch-depth: 1
 
       # see https://github.com/snyk/actions/tree/master/node
       - name: Lint Code with Snyk
-        uses: snyk/actions/node@master
+        uses: snyk/actions/node@master # TSCCR: no entry for repository "snyk/actions"
         env:
           # see https://github.com/snyk/actions#getting-your-snyk-token
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -35,6 +35,6 @@ jobs:
 
       # see https://github.com/github/codeql-action/tree/main/upload-sarif
       - name: Upload Snyk IaC results to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@168b99b3c22180941ae7dbdd5f5c9678ede476ba # v2
         with:
           sarif_file: snyk.sarif

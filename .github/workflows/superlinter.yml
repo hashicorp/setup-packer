@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
       - name: Lint Code with Super-Linter
-        uses: github/super-linter/slim@v4
+        uses: github/super-linter/slim@v4 # TSCCR: no version of github/super-linter trusts nested action "slim"
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: "main"
