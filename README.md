@@ -77,7 +77,7 @@ Additionally, you may configure [outputs](https://docs.github.com/en/actions/usi
 
 This section contains a list of all inputs that may be set for this Action.
 
-- `version` - (required) The version of `packer` to install. Defaults to `latest`.
+- `version` - The version of `packer` to install. Defaults to `latest` if unset.
 
 ## Outputs
 
