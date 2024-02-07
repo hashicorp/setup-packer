@@ -15,7 +15,7 @@ outputs:
   version:
     description: "The Packer version that was installed and added to PATH."
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
 branding:
   icon: "package"
