@@ -4,7 +4,7 @@ on:
   push:
 
 env:
-  PRODUCT_VERSION: "1.8.6"
+  PRODUCT_VERSION: "1.10.0"
 
 jobs:
   setup-packer:
