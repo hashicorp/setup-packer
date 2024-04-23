@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # file: builds.pkr.hcl
-source "file" "basic-example" {
+source "file" "basic_example" {
   content = "Lorem ipsum dolor sit amet"
   target  = "sample_artifact"
 }
@@ -26,6 +26,7 @@ Some nice description about the image which artifact is being published to HCP P
     }
   }
 
-  sources = ["sources.file.basic-example"]
+  sources = [
+    "sources.file.basic-example"
+  ]
 }
-
