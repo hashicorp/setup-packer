@@ -7,13 +7,13 @@ The `hashicorp/setup-packer` Action sets up the [Packer](https://www.packer.io) 
 ## Table of Contents
 
 <!-- TOC -->
-* [GitHub Action: `setup-packer`](#github-action--setup-packer)
+* [GitHub Action: `setup-packer`](#github-action-setup-packer)
   * [Table of Contents](#table-of-contents)
   * [Requirements](#requirements)
   * [Usage](#usage)
   * [Inputs](#inputs)
   * [Outputs](#outputs)
-  * [Integrating with HCP Packer](#Integrating-with-HCP-Packer)
+  * [Integrating with HCP Packer](#integrating-with-hcp-packer)
   * [Author Information](#author-information)
   * [License](#license)
 <!-- TOC -->
@@ -91,7 +91,9 @@ To integrate with HCP Packer, add your HCP Client ID and HCP Client secret as en
 
 We add an `HCP_PACKER_BUILD_FINGERPRINT` in this example that is based on the workflow run ID, that way it is always unique
 
-We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) (as opposed to plain-text). See the [HCP Packer Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata)
+We recommend storing these in [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) (as opposed to plain-text).
+
+For more information on using HCP Packer, see the [Getting Started tutorial](https://developer.hashicorp.com/packer/tutorials/hcp-get-started/hcp-push-image-metadata).
 
 ```yaml
 name: hcp-packer
