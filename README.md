@@ -37,7 +37,7 @@ on:
   push:
 
 env:
-  PRODUCT_VERSION: "1.8.6" # or: "latest"
+  PRODUCT_VERSION: "1.10.0" # or: "latest"
 
 jobs:
   packer:
@@ -66,7 +66,7 @@ In the above example, the following definitions have been set.
 
 - The event trigger has been set to `push`. For a complete list, see [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 - The origin of this GitHub Action has been set as `hashicorp/setup-packer@main`. For newer versions, see the [Releases](https://github.com/hashicorp/setup-packer/releases).
-- The version of `packer` to set up has been set as `1.8.6`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
+- The version of `packer` to set up has been set as `1.10.0`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
 - The Packer manifest to interact with has been set as `./image.pkr.hcl`
 
 These definitions may require updating to suit your deployment, such as specifying [self-hosted](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-self-hosted-runners) runners.
@@ -86,6 +86,7 @@ This section contains a list of all outputs that can be consumed from this Actio
 - `version` -  The version of `packer` that was installed.
 
 ## Integrating with HCP Packer
+
 To integrate with HCP Packer, add your HCP Client ID and HCP Client secret as environment variables to the Packer build call.
 
 We add an `HCP_PACKER_BUILD_FINGERPRINT` in this example that is based on the workflow run ID, that way it is always unique
@@ -105,14 +106,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
         id: setup
         with:
           version: "latest"
+
       - name: Run `packer init`
         id: init
         run: "packer init ./image.pkr.hcl"
+
       - name: Run `packer validate`
         id: validate
         run: "packer validate ./image.pkr.hcl"
