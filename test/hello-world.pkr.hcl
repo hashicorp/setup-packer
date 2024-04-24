@@ -31,7 +31,7 @@ Some nice description about the image which artifact is being published to HCP P
 
     bucket_labels = {
       "version" = "1.2.3",
-      "foo"         = "bar",
+      "foo"     = "bar",
     }
   }
 
