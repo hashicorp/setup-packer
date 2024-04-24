@@ -28,7 +28,7 @@ Other [environment variables](https://developer.hashicorp.com/packer/docs/comman
 
 ## Usage
 
-1.) Create a GitHub Actions Workflow file (e.g.: `.github/workflows/packer.yml`):
+Create a GitHub Actions Workflow file (e.g.: `.github/workflows/packer.yml`):
 
 ```yaml
 name: packer
@@ -67,7 +67,7 @@ In the above example, the following definitions have been set.
 - The event trigger has been set to `push`. For a complete list, see [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 - The origin of this GitHub Action has been set as `hashicorp/setup-packer@main`. For newer versions, see the [Releases](https://github.com/hashicorp/setup-packer/releases).
 - The version of `packer` to set up has been set as `1.10.0`. For a complete list, see [releases.hashicorp.com](https://releases.hashicorp.com/packer/).
-- The Packer manifest to interact with has been set as `./image.pkr.hcl`
+- The Packer manifest to interact with has been set as `./image.pkr.hcl`.
 
 These definitions may require updating to suit your deployment, such as specifying [self-hosted](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-self-hosted-runners) runners.
 
@@ -78,6 +78,9 @@ Additionally, you may configure [outputs](https://docs.github.com/en/actions/usi
 This section contains a list of all inputs that may be set for this Action.
 
 - `version` - The version of `packer` to install. Defaults to `latest` if unset.
+
+> [!NOTE]
+> To retrieve the `latest` version, this GitHub Action polls the HashiCorp [Releases API](https://api.releases.hashicorp.com/v1/releases/packer) and finds the latest released version of Packer that isn't marked as a pre-release (`is_prerelease`).
 
 ## Outputs
 
