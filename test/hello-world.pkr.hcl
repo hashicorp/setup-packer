@@ -20,13 +20,13 @@ build {
 Some nice description about the image which artifact is being published to HCP Packer Registry. =D
     EOT
 
-    labels = {
-      "foo-version" = "3.4.0",
+    bucket_labels = {
+      "version" = "1.2.3",
       "foo"         = "bar",
     }
   }
 
   sources = [
-    "sources.file.basic-example"
+    "sources.file.basic_example"
   ]
 }
