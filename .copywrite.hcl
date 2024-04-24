@@ -8,6 +8,7 @@ project {
   copyright_year = 2024
 
   header_ignore = [
-    "dist/index.js"
+    "dist/index.js",
+    "node_modules/"
   ]
 }
