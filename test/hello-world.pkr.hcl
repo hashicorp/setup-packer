@@ -3,9 +3,10 @@
 
 packer {
   required_plugins {
-    amazon = {
-      version = ">= 1.3.2"
-      source  = "github.com/hashicorp/amazon"
+    # see https://github.com/hashicorp/packer-plugin-hashicups/releases/tag/v1.0.2
+    hashicups = {
+      version = ">= 1.0.0"
+      source  = "github.com/hashicorp/hashicups"
     }
   }
 }
