@@ -20,13 +20,6 @@
     "copywrite": "copywrite headers && copywrite license"
   },
   "dependencies": {
-    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#1.0.0-rc1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.12.7",
-    "@types/semver": "7.5.8",
-    "@vercel/ncc": "0.38.1",
-    "prettier": "3.2.5",
-    "typescript": "5.4.5"
+    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#1.0.0"
   }
 }
