@@ -15,11 +15,16 @@
   "author": "Kerim Satirli <kerim@hashicorp.com> & Jenna Goldstrich <jgoldstrich@hashicorp.com>",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && ncc build --no-cache",
+    "build": "tsc && ncc build",
     "fmt": "prettier --write 'src/*.ts'",
     "copywrite": "copywrite headers && copywrite license"
   },
   "dependencies": {
+    "@actions/core": "^1.10.1",
     "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "@types/semver": "^7.5.8"
   }
 }
