@@ -16,7 +16,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc && ncc build --no-cache",
-    "fmt": "prettier --write 'src/*.ts'"
+    "fmt": "prettier --write 'src/*.ts'",
+    "copywrite": "copywrite headers && copywrite license"
   },
   "dependencies": {
     "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#1.0.0-rc1"
