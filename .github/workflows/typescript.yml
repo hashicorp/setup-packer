@@ -1,4 +1,5 @@
 ---
+
 name: "Code Quality: TypeScript"
 
 on:
@@ -28,8 +29,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Install NPM Packages
-        run: npm ci
+      - name: Install `ncc` globally
+        run: npm install --global @vercel/ncc
+
+      - name: Install Action-specific NPM Packages
+        run: npm install-clean
 
       - name: Build TypeScript code
-        run: npm run build
+        run: |
+          npm run-script fmt \
+          && \
+          npm run-script build
