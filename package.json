@@ -15,7 +15,7 @@
   "author": "Kerim Satirli <kerim@hashicorp.com> & Jenna Goldstrich <jgoldstrich@hashicorp.com>",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && ncc build",
+    "build": "tsc && ncc build --no-cache",
     "fmt": "prettier --write 'src/*.ts'",
     "copywrite": "copywrite headers && copywrite license"
   },
