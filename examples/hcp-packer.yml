@@ -10,21 +10,24 @@ jobs:
     name: Run Packer
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
         id: setup
         with:
           version: "latest"
+
       - name: Run `packer init`
         id: init
         run: "packer init ./image.pkr.hcl"
+
       - name: Run `packer validate`
         id: validate
         run: "packer validate ./image.pkr.hcl"
 
       - name: Build Artifact
-        run: packer build -color=false -on-error=abort image.pkr.hcl
+        run: "packer build -color=false -on-error=abort image.pkr.hcl"
         env:
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
           HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}

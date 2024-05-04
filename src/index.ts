@@ -6,6 +6,8 @@
 import * as core from "@actions/core";
 import * as hc from "@hashicorp/github-actions-core";
 
+export const PRODUCT = "packer";
+
 async function main() {
   const version = core.getInput("version");
   if (version == null) {
@@ -13,7 +15,7 @@ async function main() {
     return;
   }
   try {
-    await hc.getHashicorpRelease("packer", version);
+    await hc.getHashicorpRelease(PRODUCT, version);
   } catch (error) {
     if (error instanceof Error) {
       core.setFailed(error.message);
