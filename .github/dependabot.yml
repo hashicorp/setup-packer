@@ -11,5 +11,3 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    allow:
-      - dependency-name: "hashicorp/*"
