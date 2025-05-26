@@ -11,7 +11,10 @@ updates:
     schedule:
       interval: "daily"
     groups:
-      # Group all GitHub Actions updates into a single PR
-      actions:
-        patterns:
-          - "*"
+      github-actions-breaking:
+        update-types:
+          - major
+      github-actions-backward-compatible:
+        update-types:
+          - minor
+          - patch
