@@ -6,8 +6,12 @@ updates:
     schedule:
       interval: "weekly"
 
-  # Dependabot only updates HashiCorp GHAs, external GHAs are managed by internal tooling (tsccr)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      # Group all GitHub Actions updates into a single PR
+      actions:
+        patterns:
+          - "*"
