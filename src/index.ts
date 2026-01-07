@@ -1,5 +1,5 @@
 /**
- * Copyright HashiCorp, Inc. 2020, 2024
+ * Copyright IBM Corp. 2020, 2026
  * SPDX-License-Identifier: Apache-2.0
  */
 
