@@ -1,6 +1,6 @@
 {
   "name": "setup-packer",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "A GitHub Action to install a specific version of HashiCorp Packer and add it to PATH.",
   "keywords": [
     "github-actions",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@actions/core": "^2.0.3",
     "@actions/http-client": "^3.0.2",
-    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v1.2.0"
+    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v1.3.0"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
@@ -31,6 +31,6 @@
   },
   "overrides": {
     "axios": "^1.15.0",
-    "undici": "6.24.0"
+    "undici": "6.27.0"
   }
 }
