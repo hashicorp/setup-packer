@@ -51,3 +51,15 @@ jobs:
 
       - name: Print `packer` version
         run: packer version
+
+      - name: Create a `.tool-versions` file
+        run: echo "packer ${{ env.PRODUCT_VERSION }}" > .tool-versions
+
+      - name: Setup `packer` from `version-file` (using local GitHub Action)
+        uses: "./"
+        id: version_file
+        with:
+          version-file: .tool-versions
+
+      - name: Validate `packer` version from `version-file` is accurate
+        run: "packer version | grep --silent 'Packer v${{ env.PRODUCT_VERSION }}'"

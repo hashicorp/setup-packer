@@ -9,8 +9,11 @@ description: "A GitHub Action to install a specific version of HashiCorp Packer 
 inputs:
   version:
     description: "The Packer version to install and add to PATH."
-    required: true
+    required: false
     default: "latest"
+  version-file:
+    description: "Path to a .tool-versions file to read the Packer version from."
+    required: false
 outputs:
   version:
     description: "The Packer version that was installed and added to PATH."
