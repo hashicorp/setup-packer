@@ -78,6 +78,20 @@ Additionally, you may configure [outputs](https://docs.github.com/en/actions/usi
 This section contains a list of all inputs that may be set for this Action.
 
 - `version` - The version of `packer` to install. Defaults to `latest` if unset.
+- `version-file` - Path to a [`.tool-versions`](https://asdf-vm.com/manage/configuration.html) file (the format used by [asdf](https://asdf-vm.com/) and [mise](https://mise.jdx.dev/)) to read the `packer` version from. The action reads the version declared for the `packer` tool, for example:
+
+  ```text
+  packer 1.10.0
+  ```
+
+  If both `version` and `version-file` are set, `version` takes precedence.
+
+```yaml
+- name: Setup `packer`
+  uses: hashicorp/setup-packer@main
+  with:
+    version-file: .tool-versions
+```
 
 > [!NOTE]
 > To retrieve the `latest` version, this GitHub Action polls the HashiCorp [Releases API](https://api.releases.hashicorp.com/v1/releases/packer) and finds the latest released version of Packer that isn't marked as a pre-release (`is_prerelease`).
