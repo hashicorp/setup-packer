@@ -2,7 +2,8 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "target": "es6",
-    "module": "commonjs",
+    "module": "es2022",
+    "moduleResolution": "bundler",
     "outDir": "./dist",
     "pretty": true,
     "removeComments": true,
