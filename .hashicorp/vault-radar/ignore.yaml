@@ -1,0 +1,11 @@
+# Copyright IBM Corp. 2022, 2026
+# SPDX-License-Identifier: Apache-2.0
+
+---
+
+# openpgp.js, bundled into dist/index.js through @hashicorp/js-releases, contains
+# the PGP armor header as a string literal. Vault Radar reports that bare header
+# as a PGP private key. Real armored keys are still caught by its cryptographic
+# key bundle check.
+- secret_values:
+    - '^-----BEGIN PGP PRIVATE KEY BLOCK-----$'
