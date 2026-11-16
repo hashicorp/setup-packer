@@ -4,6 +4,8 @@
     "target": "es6",
     "module": "es2022",
     "moduleResolution": "bundler",
+    "rootDir": "./src",
+    "types": ["node"],
     "outDir": "./dist",
     "pretty": true,
     "removeComments": true,
