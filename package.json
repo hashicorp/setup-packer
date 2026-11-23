@@ -22,7 +22,7 @@
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@actions/http-client": "^4.0.1",
-    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v2.0.0-beta"
+    "@hashicorp/github-actions-core": "github:hashicorp/github-actions-core#v2.0.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
